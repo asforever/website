@@ -7,7 +7,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const contextPath = path.resolve(__dirname, "../src");
 const distPath = path.resolve(__dirname, "../dist");
 const htmlPath = path.resolve(contextPath, "index.html");
+const PUBLIC_URL = process.env.PUBLIC_URL || '/';
+
 const extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
+
+
 
 module.exports = {
     context: contextPath,
@@ -74,6 +78,9 @@ module.exports = {
             title: '管理输出',
             template: htmlPath,
             inject: 'body'
+        }),
+        new webpack.DefinePlugin({
+            'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL)
         }),
         extractCSS,
     ],
