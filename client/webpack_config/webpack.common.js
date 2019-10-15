@@ -2,16 +2,12 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const contextPath = path.resolve(__dirname, "../src");
 const distPath = path.resolve(__dirname, "../dist");
 const htmlPath = path.resolve(contextPath, "index.html");
 const PUBLIC_URL = process.env.PUBLIC_URL || '/';
-
-const extractCSS = new ExtractTextPlugin('stylesheets/[name].css');
-
-
 
 module.exports = {
     context: contextPath,
@@ -32,7 +28,7 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: require.resolve('babel-loader'),
                 options: {
-                    presets: ['@babel/preset-react','@babel/preset-env'],
+                    presets: ['@babel/preset-react', '@babel/preset-env'],
                     cacheDirectory: true,
                     cacheCompression: false,
                 }
@@ -43,10 +39,15 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: extractCSS.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
-                })
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader', options: {
+                            sourceMap: true,
+                            modules: true,
+                        }
+                    },
+                ],
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
@@ -82,7 +83,11 @@ module.exports = {
         new webpack.DefinePlugin({
             'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL)
         }),
-        extractCSS,
+        new MiniCssExtractPlugin({
+            filename: '[name].css',
+            chunkFilename: '[id].css',
+            ignoreOrder: false, // Enable to remove warnings about conflicting order
+        })
     ],
     optimization: {
         runtimeChunk: 'single',
