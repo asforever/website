@@ -1,12 +1,14 @@
 import React from "react";
 import LayOutComponent from "../../component/layout/LayoutComponent";
+import Head from "./Head";
+import Category from "./Category";
 
-class Blog extends React.Component {
+export default class Blog extends React.Component {
     render() {
+        const top = <Head/>;
+        const left = <Category/>;
         return (
-            <LayOutComponent></LayOutComponent>
+            <LayOutComponent top = {top} left={left}></LayOutComponent>
         )
     }
 }
-
-export default Blog;
