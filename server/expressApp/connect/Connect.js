@@ -1,18 +1,18 @@
 const express = require('express');
 
 class Connect {
-
-    async run(port = 3000, middlewareArr = []) {
+    async run(port = 3000) {
         const server = express();
-        middlewareArr.forEach(middleware => {
-            server.use(middleware);
-        });
         await new Promise((resolve, reject) => {
             server.listen(port, (err) => {
                 if (err) reject(err);
-                else resolve();
+                else {
+                    console.log("server listening on port " + port);
+                    resolve();
+                }
             });
         });
+        return server;
     }
 }
 

@@ -9,12 +9,13 @@ class ExpressApp {
     }
 
     constructor() {
-        this.middleware = Middleware;
+        this.middleware = new Middleware();
         this.connect = new Connect();
     }
 
     async start(config) {
-        await this.connect.run(config.port, this.middleware);
+        const server = await this.connect.run(config.port);
+        this.middleware.run(server);
     }
 }
 

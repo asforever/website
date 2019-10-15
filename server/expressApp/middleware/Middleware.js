@@ -6,7 +6,7 @@ const router = require("./routes");
 const path = require("path");
 const {crossOrigins} = require("../../config");
 
-const headerMid= (req, res, next) => {
+const headerMid = (req, res, next) => {
     const origin = req.headers.origin;
     if (crossOrigins.indexOf(origin) > -1) {
         res.setHeader('Access-Control-Allow-Origin', origin);
@@ -17,18 +17,23 @@ const headerMid= (req, res, next) => {
     next();
 };
 
-const staticPageMid = express.static(path.resolve(__dirname, "../static/build"));
-const staticResourceMid = express.static(path.resolve(__dirname, "../static/resource"));
-const cookieMid = cookieParser();
-const bodyMid = bodyParser();
-const sessionMid = session({secret: 'keyboard cat'});
+class Middleware {
+    constructor() {
+        this.isRun = false;
+    }
 
-module.exports = [
-    headerMid,
-    staticPageMid,
-    staticResourceMid,
-    cookieMid,
-    bodyMid,
-    sessionMid,
-    router
-];
+    run(server) {
+        if (!server || this.isRun) return;
+        this.isRun = true;
+        server.use(headerMid);
+        server.use(express.static(path.resolve(__dirname, "../static/build")));
+        server.use(express.static(path.resolve(__dirname, "../static/resource")));
+        server.use(cookieParser());
+        server.use(bodyParser());
+        server.use(session({secret: 'keyboard cat'}));
+        server.use(router);
+
+    }
+}
+
+module.exports = Middleware;
