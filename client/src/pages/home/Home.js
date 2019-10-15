@@ -6,8 +6,9 @@ import router from "../../router/router";
 
 class Home extends React.Component {
     render() {
-        return router.children.map((list,key) => {
-            return <li  key={key}><Link to = {list.path}>{list.path}</Link></li>
+        return router.children.map((list, key) => {
+            if (!list.component||list.name==="home") return;
+            return <li key={key}><Link to={list.path}>{list.path}</Link></li>
         })
     }
 }

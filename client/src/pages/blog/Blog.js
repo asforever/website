@@ -1,12 +1,12 @@
 import React from "react";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom";
+import LayOutComponent from "../../component/layout/LayoutComponent";
 
 class Blog extends React.Component {
     render() {
         return (
-            <div>Blog</div>
+            <LayOutComponent></LayOutComponent>
         )
     }
 }
+
 export default Blog;
