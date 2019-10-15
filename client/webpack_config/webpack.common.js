@@ -40,7 +40,7 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    process.env.NODE_ENV === 'production' ? MiniCssExtractPlugin.loader : "style-loader",//hmr can't work in .css file when use MiniCssExtractPlugin
                     {
                         loader: 'css-loader', options: {
                             sourceMap: true,
