@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./LayoutComponent.css";
 
-function LayOutComponent({top = "top", bottom = "bottom", left = "left", main = "main"} = {}) {
+function LayOutComponent(props) {
     let list = [];
-    if (top) list.push(<div className={styles.top} key="top">{top}</div>);
-    if (left) list.push(<div className={styles.left} key="left">{left}</div>);
-    if (main) list.push(<div className={styles.main} key="main">{main}</div>);
-    if (bottom) list.push(<div className={styles.bottom} key="bottom">{bottom}</div>);
+    if (props.top) list.push(<div className={styles.top} key="top">{props.top}</div>);
+    if (props.left) list.push(<div className={styles.left} key="left">{props.left}</div>);
+    if (props.main) list.push(<div className={styles.main} key="main">{props.main}</div>);
+    if (props.bottom) list.push(<div className={styles.bottom} key="bottom">{props.bottom}</div>);
     return (
-        <div>{list}</div>
+        <div className={props.className}>{list}</div>
     )
 }
 

@@ -1,17 +1,13 @@
 .top {
-    padding: 15px;
     border-bottom: 1px solid #eeb02d;
 }
 .bottom {
     bottom: 0;
-    padding: 15px;
     border-top: 1px solid #eeb02d;
 }
 .left {
-    padding: 15px;
     float:left;
     border-right: 1px solid #eeb02d;
 }
 .main {
-    padding: 15px;
 }
