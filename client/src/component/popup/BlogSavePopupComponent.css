@@ -1,0 +1,31 @@
+.container {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border: 1px solid #b2b2b2;
+    width: 240px;
+    height: 160px;
+    background: #e3e3e3;
+}
+
+.close {
+    float: right;
+}
+
+.apply{
+    position: absolute;
+    width: 60px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 5px;
+}
+.category {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
