@@ -45,5 +45,5 @@ export default class BlogSavePopupComponent extends React.Component {
 BlogSavePopupComponent.propTypes = {
     close: PropTypes.func,
     apply: PropTypes.func,
-    categoryChange: PropTypes.categoryChange
+    categoryChange: PropTypes.func
 };
