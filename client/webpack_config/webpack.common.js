@@ -29,6 +29,7 @@ module.exports = {
                 loader: require.resolve('babel-loader'),
                 options: {
                     presets: ['@babel/preset-react', '@babel/preset-env'],
+                    plugins: ['@babel/plugin-proposal-class-properties'],
                     cacheDirectory: true,
                     cacheCompression: false,
                 }
