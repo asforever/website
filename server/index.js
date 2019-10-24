@@ -1,14 +1,14 @@
 const config = require("./config");
-const mongooseApp = require("./mongooseApp");
-const expressApp = require("./expressApp");
+const mongoose = require("./mongoose");
+const express = require("./express");
 
 const main = (async () => {
-    let connect = new mongooseApp.Connect();
+    let connect = new mongoose.Connect();
     await connect.run(config.mongodb.url);
 
-    let serverConnect = new expressApp.Connect();
+    let serverConnect = new express.Connect();
     let server = await serverConnect.run(config.port);
-    new expressApp.Middleware().run(server);
+    new express.Middleware().run(server);
 
 });
 main().then(() => console.log("start server success"));
