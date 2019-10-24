@@ -1,16 +1,15 @@
 import {FileFormat} from "./FileFormat";
 
 export default class FetchUtil {
-    static fetch(api) {
-        const {method, format, url} = api;
+    static fetch({url = "", method = "GET", params, format}) {
 
         let defaultOption = {
-            //body: JSON.stringify(data), // must match 'Content-Type' header
+            body: JSON.stringify(params), // must match 'Content-Type' header
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             credentials: 'same-origin', // include, same-origin, *omit
-            headers: {
-                'content-type': 'application/json'
-            },
+            headers:new Headers({
+                'Content-Type': 'application/json'
+            }),
             method: method, // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, cors, *same-origin
             redirect: 'follow', // manual, *follow, error

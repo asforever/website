@@ -1,15 +1,15 @@
-export default class Blog {
-    constructor(){
+export class Blog {
+    constructor() {
         this.tittle = "";
-        this.intruduction = "";
+        this.summary = "";
         this.content = "";
     }
 
-    load(){
+    load() {
 
     }
 
-    save(){
+    save() {
 
     }
 
