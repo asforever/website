@@ -1,14 +1,14 @@
 const config = require("./config");
-const MongooseApp = require("./mongooseApp");
-const ExpressApp = require("./expressApp");
+const mongooseApp = require("./mongooseApp");
+const expressApp = require("./expressApp");
 
 const main = (async () => {
-    const mongodbConfig = config.mongodb;
-    let mongooseApp = MongooseApp.getInstance();
-    await mongooseApp.start(mongodbConfig);
+    let connect = new mongooseApp.Connect();
+    await connect.run(config.mongodb.url);
 
-    let expressApp = ExpressApp.getInstance();
-    await expressApp.start(config);
+    let serverConnect = new expressApp.Connect();
+    let server = await serverConnect.run(config.port);
+    new expressApp.Middleware().run(server);
 
 });
 main().then(() => console.log("start server success"));

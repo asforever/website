@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 /* GET users listing. */
-router.get('/save_blog', (req, res, next) => {
-    console.log(req.query.id);
-    res.send(req.query.id);
+router.post('/save_blog', (req, res, next) => {
+    console.log(req.body);
+    res.send({title:"test detail",summary:"summary detail",content:"content detail"});
 });
 
 module.exports = router;
