@@ -1,5 +1,6 @@
 const express = require("express");
-const root = require('./root');
+const Root = require('./Root');
+const SaveBlog = require('./SaveBlog');
 
 const router = express.Router();
 router.get('*', (req, res, next) => {
@@ -12,6 +13,7 @@ router.get('*', (req, res, next) => {
      }
      }*/
 });
-router.use(root);
+router.use(Root);
+router.use(SaveBlog);
 
 module.exports = router;
