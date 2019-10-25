@@ -9,7 +9,8 @@ class PopupContainer extends React.Component {
         let child = null;
         switch (this.props.type) {
             case PopupType.POPUP_SAVE_BLOG:
-                child = <BlogSavePopupComponent categoryChange = {()=>{}} apply = {this.props.saveBlog} close={this.props.close}></BlogSavePopupComponent>;
+                child = <BlogSavePopupComponent categoryChange={() => {
+                }} apply={()=>this.props.saveBlog(this.props.data)} close={this.props.close}></BlogSavePopupComponent>;
                 break;
             case PopupType.CLOSE:
                 return null;
@@ -23,7 +24,8 @@ class PopupContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        type: state.popup.type
+        type: state.popup.type,
+        data: state.popup.data,
     }
 };
 
@@ -32,8 +34,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         close: (e) => {
             dispatch(PopupClose());
         },
-        saveBlog:(blogInfo)=>{
-            dispatch(SaveBlog(blogInfo));
+        saveBlog: (blog) => {
+            dispatch(SaveBlog({data: blog}));
         }
     }
 };

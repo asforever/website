@@ -1,16 +1,7 @@
 export class Blog {
-    constructor() {
-        this.tittle = "";
-        this.summary = "";
-        this.content = "";
+    constructor({title, summary, content}) {
+        this.title = title;
+        this.summary = summary;
+        this.content = content;
     }
-
-    load() {
-
-    }
-
-    save() {
-
-    }
-
 }

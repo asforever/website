@@ -9,12 +9,14 @@ const PopupReducer = (state, action) => {
             ResourceManager.send({
                 url: WebURL.SAVE_BLOG,
                 method: "POST",
-                params: {data: new Blog()},
+                params: action.data,
                 format: FileFormat.TEXT
             });
             break;
     }
+
     newState.type = action.type;
+    newState.data = action.data;
     return newState;
 };
 

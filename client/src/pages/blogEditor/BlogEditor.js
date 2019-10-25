@@ -4,22 +4,25 @@ import ReactMarkdown from "react-markdown";
 
 import BlogEditorCSS from "./BlogEditor.css";
 import {PopupSaveBlog} from "../../store/action/PopupAction";
+import {Blog} from "../../app";
 
 class BlogEditor extends React.Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
         this.state = {
-            text: "*# h1* \n" +
+            title: "Title 1",
+            summary: "Summary",
+            content: "*# h1* \n" +
                 "## h2 \n" +
-                "### h3 \n" +
+                "## h3 \n" +
                 "![Benjamin Bannekat](//www.baidu.com/img/baidu_jgylogo3.gif)"
         }
     }
 
     onChange(e) {
         this.setState({
-            text: e.target.value
+            content: e.target.value
         });
     }
 
@@ -29,11 +32,11 @@ class BlogEditor extends React.Component {
         return (
             <div className={BlogEditorCSS.container}>
                 <div className={BlogEditorCSS.head}>
-                    <a href="#" onClick={this.props.onClick}>save</a>
+                    <a href="#" onClick={(e) => this.props.popupSaveBlog(e, this.state)}>save</a>
                 </div>
-                <textarea className={BlogEditorCSS.inputField} defaultValue={this.state.text}
+                <textarea className={BlogEditorCSS.inputField} defaultValue={this.state.content}
                           onChange={this.onChange}></textarea>
-                <ReactMarkdown className={BlogEditorCSS.render} source={this.state.text}
+                <ReactMarkdown className={BlogEditorCSS.render} source={this.state.content}
                 ></ReactMarkdown>
             </div>
         )
@@ -42,9 +45,10 @@ class BlogEditor extends React.Component {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        onClick: (e) => {
+        popupSaveBlog: (e, state) => {
             e.preventDefault();
-            dispatch(PopupSaveBlog({msg: "test"}));
+            const blog = new Blog(state);
+            dispatch(PopupSaveBlog({data: blog}));
         }
     }
 };

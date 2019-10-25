@@ -5,9 +5,9 @@ export const PopupType = {
 };
 
 //打开保存blog的弹框
-export const PopupSaveBlog = ({msg}) => ({
+export const PopupSaveBlog = ({data}) => ({
     type: PopupType.POPUP_SAVE_BLOG,
-    msg: msg,
+    data: data,
 });
 //关闭弹窗
 export const PopupClose = () => ({
@@ -15,8 +15,9 @@ export const PopupClose = () => ({
 });
 
 //保存blog
-export const SaveBlog = () => ({
+export const SaveBlog = (data) => ({
     type: PopupType.SAVE_BLOG,
+    data: data,
 });
 
 

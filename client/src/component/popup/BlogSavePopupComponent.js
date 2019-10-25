@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from 'prop-types';
 
 import css from "./BlogSavePopupComponent.css";
+import {Blog} from "../../app";
 
 export default class BlogSavePopupComponent extends React.Component {
     constructor(props) {
