@@ -1,1 +1,1 @@
-export * from "./PopupAction";
+export * from "./syncAction/PopupAction";

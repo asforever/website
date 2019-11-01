@@ -4,8 +4,8 @@ import HeadPage from "./HeadPage";
 import CategoryPage from "./CategoryPage";
 import BlogCSS from "./Blog.css";
 import {FileFormat, ResourceManager, WebURL} from "../../resource";
-import {PopupClose} from "../../store/action/PopupAction";
-import {FetchBlogCategory} from "../../store/action/FetchAction";
+import {PopupClose} from "../../store/action/syncAction/PopupAction";
+import {FetchBlogCategory} from "../../store/action/syncAction/FetchAction";
 import {connect} from "react-redux";
 
 export class BlogPage extends React.Component {

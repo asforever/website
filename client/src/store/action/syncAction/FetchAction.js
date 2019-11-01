@@ -1,4 +1,4 @@
-import {FetchActionType} from "./ActionType";
+import {FetchActionType} from "../ActionType";
 export const SaveBlog = ({params}) => ({
     type: FetchActionType.SAVE_BLOG,
     params: params,
