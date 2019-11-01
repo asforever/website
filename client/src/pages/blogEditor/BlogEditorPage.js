@@ -5,14 +5,13 @@ import ReactMarkdown from "react-markdown";
 import BlogEditorCSS from "./BlogEditor.css";
 import {PopupSaveBlog} from "../../store/action/PopupAction";
 import {Blog} from "../../app";
+import {FileFormat, ResourceManager, WebURL} from "../../resource";
 
-class BlogEditor extends React.Component {
+class BlogEditorPage extends React.Component {
     constructor(props) {
         super(props);
         this.onChange = this.onChange.bind(this);
         this.state = {
-            title: "Title 1",
-            summary: "Summary",
             content: "*# h1* \n" +
                 "## h2 \n" +
                 "## h3 \n" +
@@ -47,8 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         popupSaveBlog: (e, state) => {
             e.preventDefault();
-            const blog = new Blog(state);
-            dispatch(PopupSaveBlog({data: blog}));
+            dispatch(PopupSaveBlog({data: state}));
         }
     }
 };
@@ -58,5 +56,5 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(BlogEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(BlogEditorPage);
 

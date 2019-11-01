@@ -4,11 +4,10 @@ export default class FetchUtil {
     static fetch({url = "", method = "GET", params, format}) {
 
         let defaultOption = {
-            body: JSON.stringify(params), // must match 'Content-Type' header
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             credentials: 'same-origin', // include, same-origin, *omit
-            headers:new Headers({
-                'Content-Type': 'application/json'
+            headers: new Headers({
+                'Content-Type': 'application/json',
             }),
             method: method, // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, cors, *same-origin
@@ -16,6 +15,16 @@ export default class FetchUtil {
             referrer: 'no-referrer', // *client, no-referrer
         };
 
+        let newURL = url;
+        if (method === "POST") {
+            defaultOption.body = JSON.stringify(params || {});
+        } else if (method === "GET") {
+            if (params && params instanceof Array) {
+                params.forEach(param => {
+                    newURL += param + '/';
+                })
+            }
+        }
 
         return new Promise(r => {
             fetch(url, defaultOption).then(response => {

@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 import BlogCSS from "./Blog.css";
 
-class Head extends React.Component {
+class HeadPage extends React.Component {
     render() {
         return (
             <>
@@ -13,4 +13,4 @@ class Head extends React.Component {
     }
 }
 
-export default Head;
+export default HeadPage;

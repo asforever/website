@@ -1,15 +1,15 @@
 import RouteList from "../component/list/route/RouteList";
-import Home from "../pages/home/Home";
-import Blog from "../pages/blog/Blog";
-import BlogEditor from "../pages/blogEditor/BlogEditor";
+import Home from "../pages/home/HomePage";
+import Blog from "../pages/blog/BlogPage";
+import BlogEditor from "../pages/blogEditor/BlogEditorPage";
 const baseUrl = process.env.PUBLIC_URL;
 
 const router = new RouteList();
 
 const routeRoot = new RouteList({name: "root", path: baseUrl + ""});
 const routeHome = new RouteList({name: "home", path: baseUrl + "home"});
-const routeBlog = new RouteList({blog: "blog", path: baseUrl + "blog"});
-const routeBlogEditor = new RouteList({blog: "blogEditor", path: baseUrl + "blogEditor"});
+const routeBlog = new RouteList({name: "blog", path: baseUrl + "blog"});
+const routeBlogEditor = new RouteList({name: "blogEditor", path: baseUrl + "blogEditor"});
 
 routeRoot.setRedirect("home");
 routeHome.setComponent(Home);

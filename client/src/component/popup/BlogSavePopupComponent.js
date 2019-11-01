@@ -20,23 +20,29 @@ export default class BlogSavePopupComponent extends React.Component {
         this.props.close();
     }
 
-    apply() {
+    apply(e) {
+        e.preventDefault();
         this.close();
-        this.props.apply();
+        this.props.apply({
+            title: e.target.children[0].value,
+            category: e.target.children[1].value,
+            summary: e.target.children[2].value
+        });
     }
 
     render() {
         return (
             <>
                 <div className={css.container}>
-                    <button className={css.close} onClick={this.close}>x</button>
-                    <select className={css.category} defaultValue="Saab" onChange={this.categoryChange}>
-                        <option>Volvo</option>
-                        <option>Saab</option>
-                        <option>Mercedes</option>
-                        <option>Audi</option>
-                    </select>
-                    <button className={css.apply} onClick={this.apply}>apply</button>
+                    <div className={css.header}>
+                        <button className={css.close} onClick={this.close}>x</button>
+                    </div>
+                    <form onSubmit={this.apply}>
+                        目录：<input className={css.input}></input>
+                        分类：<input className={css.input}></input>
+                        <textarea className={css.textarea}></textarea>
+                        <input type="submit" className={css.apply}></input>
+                    </form>
                 </div>
             </>
         )

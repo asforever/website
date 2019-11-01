@@ -7,7 +7,7 @@ import RouteListComponent from "./component/list/route/RouteListComponent";
 
 import store from "./store";
 import router from "./router/router"
-import PopupContainer from "./pages/popup/PopupContainer";
+import PopupContainer from "./pages/popup/PopupContainerPage";
 
 export const AppComponent = () => (
     <Provider store={store}>
