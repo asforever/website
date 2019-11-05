@@ -5,7 +5,7 @@ import BlogSavePopupComponent from "../../component/popup/BlogSavePopupComponent
 
 import {PopupClose} from "../../store/action/syncAction/PopupAction";
 import {SaveBlog} from "../../store/action/syncAction/FetchAction";
-import {PopupActionType} from "../../store/action/ActionType";
+import {PopupActionType} from "../../store/ActionType";
 
 class PopupContainerPage extends React.Component {
 

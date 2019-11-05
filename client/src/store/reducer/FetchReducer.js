@@ -1,4 +1,4 @@
-import {FetchActionType} from "../action/ActionType";
+import {FetchActionType} from "../ActionType";
 import {FileFormat, ResourceManager, WebURL} from "../../resource";
 
 const FetchReducer =(state, action) => {
