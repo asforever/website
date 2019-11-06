@@ -4,8 +4,8 @@ import HeadPage from "./HeadPage";
 import CategoryPage from "./CategoryPage";
 import BlogCSS from "./Blog.css";
 import {FileFormat, ResourceManager, WebURL} from "../../resource";
-import {PopupClose} from "../../store/action/syncAction/PopupAction";
-import {FetchBlogCategory} from "../../store/action/syncAction/FetchAction";
+import {PopupClose} from "../../store/action/PopupAction";
+import {FetchBlogCategoryRequest} from "../../store/action/FetchAction";
 import {connect} from "react-redux";
 
 export class BlogPage extends React.Component {
@@ -19,7 +19,6 @@ export class BlogPage extends React.Component {
         const bottom = <div>bottom</div>;
         const className = BlogCSS.container;
 
-        console.log(this.props.blogCategory);
         return (
             <LayOutComponent  {...{className, top, left, main, bottom}}></LayOutComponent>
         )
@@ -35,7 +34,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchBlogCategory: () => {
-            dispatch(FetchBlogCategory());
+            dispatch(FetchBlogCategoryRequest());
         }
     }
 };

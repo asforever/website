@@ -3,8 +3,8 @@ import {connect} from "react-redux";
 
 import BlogSavePopupComponent from "../../component/popup/BlogSavePopupComponent";
 
-import {PopupClose} from "../../store/action/syncAction/PopupAction";
-import {SaveBlog} from "../../store/action/syncAction/FetchAction";
+import {PopupClose} from "../../store/action/PopupAction";
+import {SaveBlogRequest} from "../../store/action/FetchAction";
 import {PopupActionType} from "../../store/ActionType";
 
 class PopupContainerPage extends React.Component {
@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(PopupClose());
         },
         saveBlog: (submitData, propData) => {
-            dispatch(SaveBlog({params: Object.assign({}, submitData, propData)}));
+            dispatch(SaveBlogRequest({params: Object.assign({}, submitData, propData)}));
         }
     }
 };

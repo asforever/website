@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import ReactMarkdown from "react-markdown";
 
 import BlogEditorCSS from "./BlogEditor.css";
-import {PopupSaveBlog} from "../../store/action/syncAction/PopupAction";
+import {PopupSaveBlog} from "../../store/action/PopupAction";
 import {Blog} from "../../app";
 import {FileFormat, ResourceManager, WebURL} from "../../resource";
 
