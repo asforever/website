@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import BlogSavePopupComponent from "../../component/popup/BlogSavePopupComponent";
 
 import {PopupClose} from "../../store/action/PopupAction";
-import {SaveBlogRequest} from "../../store/action/FetchAction";
+import {SaveBlogRequest} from "../../store/action/BlogAction";
 import {PopupActionType} from "../../store/ActionType";
 
 class PopupContainerPage extends React.Component {

@@ -1,9 +1,10 @@
 import {FetchActionType} from "../ActionType";
 import {FileFormat, ResourceManager, WebURL} from "../../resource";
 
-const FetchReducer =(state, action) => {
+const BlogReducer =(state, action) => {
     let newState = {};
-    switch (action.type) {
+    return newState;
+   /* switch (action.type) {
         case FetchActionType.SAVE_BLOG:
             ResourceManager.send({
                 url: WebURL.SAVE_BLOG,
@@ -26,9 +27,9 @@ const FetchReducer =(state, action) => {
             });
             //newState.blogCategory = blogCategory;
             break;
-    }
-    return newState;
+    }*/
+
 };
 
-export default FetchReducer;
+export default BlogReducer;
 

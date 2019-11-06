@@ -5,7 +5,7 @@ import CategoryPage from "./CategoryPage";
 import BlogCSS from "./Blog.css";
 import {FileFormat, ResourceManager, WebURL} from "../../resource";
 import {PopupClose} from "../../store/action/PopupAction";
-import {FetchBlogCategoryRequest} from "../../store/action/FetchAction";
+import {FetchBlogCategoryRequest} from "../../store/action/BlogAction";
 import {connect} from "react-redux";
 
 export class BlogPage extends React.Component {

@@ -46,7 +46,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         popupSaveBlog: (e, state) => {
             e.preventDefault();
-            dispatch(PopupSaveBlog({data: state}));
+            dispatch(PopupSaveBlog({content: state.content}));
         }
     }
 };

@@ -6,7 +6,7 @@ export const PopupActionType = {
 export const FetchActionType = {
     SAVE_BLOG_REQUEST: "save blog request",
     SAVE_BLOG_SUCCESS: "save blog success",
-    SAVE_BLOG_ERROR: "save blog success error",
+    SAVE_BLOG_ERROR: "save blog error",
 
     FETCH_BLOG_REQUEST: "fetch blog request",
     FETCH_BLOG_SUCCESS: "fetch blog success",
