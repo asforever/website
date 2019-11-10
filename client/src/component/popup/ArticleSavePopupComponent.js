@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from 'prop-types';
 
-import css from "./BlogSavePopupComponent.css";
-import {Blog} from "../../app";
+import css from "./ArticleSavePopupComponent.css";
 
-export default class BlogSavePopupComponent extends React.Component {
+export default class ArticleSavePopupComponent extends React.Component {
     constructor(props) {
         super(props);
         this.categoryChange = this.categoryChange.bind(this);
@@ -49,7 +48,7 @@ export default class BlogSavePopupComponent extends React.Component {
     }
 }
 
-BlogSavePopupComponent.propTypes = {
+ArticleSavePopupComponent.propTypes = {
     close: PropTypes.func,
     apply: PropTypes.func,
     categoryChange: PropTypes.func

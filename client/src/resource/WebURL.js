@@ -2,7 +2,7 @@ const ROOT_URL = process.env.NODE_ENV === "development" ? "http://localhost:9000
 
 export class WebURL {
     static ROOT_URL = ROOT_URL;
-    static SAVE_BLOG = WebURL.ROOT_URL + "save_blog/";
-    static BLOG = WebURL.ROOT_URL + "blog/";
-    static BLOG_CATEGORY = WebURL.ROOT_URL + "blogCategory/";
+    static SAVE_ARTICLE = WebURL.ROOT_URL + "save_article/";
+    static ARTICLE = WebURL.ROOT_URL + "article/";
+    static ARTICLE_CATEGORY = WebURL.ROOT_URL + "article_category/";
 }

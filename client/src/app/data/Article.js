@@ -1,4 +1,4 @@
-export class Blog {
+export class Article {
     constructor({title, summary, content, category}) {
         this.title = title;
         this.summary = summary;

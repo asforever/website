@@ -1,8 +1,8 @@
 import {combineReducers} from "redux";
 import PopupReducer from "./PopupReducer";
-import BlogReducer from "./BlogReducer";
+import ArticleReducer from "./ArticleReducer";
 
 export default combineReducers({
     popup: PopupReducer,
-    blog: BlogReducer
+    article: ArticleReducer
 });

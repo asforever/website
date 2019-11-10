@@ -1,6 +1,6 @@
 import {all} from "redux-saga/effects";
-import {SaveBlogSaga} from "./BlogSagas";
+import {ArticleSagas} from "./ArticleSagas";
 
 export default function* rootSaga() {
-    yield all([SaveBlogSaga()])
+    yield all([ArticleSagas()])
 }

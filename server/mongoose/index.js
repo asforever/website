@@ -1,7 +1,7 @@
 const Connect = require("./connect/Connect") ;
-const Blog = require("./blog/Blog") ;
+const Article = require("./article/Article") ;
 
 module.exports = {
     Connect,
-    Blog,
+    Article,
 };

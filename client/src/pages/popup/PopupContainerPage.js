@@ -1,46 +1,54 @@
 import React from "react";
 import {connect} from "react-redux";
 
-import BlogSavePopupComponent from "../../component/popup/BlogSavePopupComponent";
+import ArticleSavePopupComponent from "../../component/popup/ArticleSavePopupComponent";
 
-import {PopupClose} from "../../store/action/PopupAction";
-import {SaveBlogRequest} from "../../store/action/BlogAction";
-import {PopupActionType} from "../../store/ActionType";
+import {ClosePopupSaveArticle} from "../../store/action/PopupAction";
+import {SaveArticleRequest} from "../../store/action/ArticleAction";
+import {PopupMgr} from "../../app/storage/PopupMgr";
 
 class PopupContainerPage extends React.Component {
 
     render() {
-        let child = null;
-        switch (this.props.type) {
-            case PopupActionType.POPUP_SAVE_BLOG:
-                child = <BlogSavePopupComponent categoryChange={() => {
-                }} apply={(submitData) => this.props.saveBlog(submitData, this.props.data)}
-                                                close={this.props.close}></BlogSavePopupComponent>;
-                break;
-            case PopupActionType.POPUP_CLOSE:
-                return null;
-            default:
-                return null;
-        }
 
-        return <div>{child}</div>
+        let children = [];
+        const saveArticlePopup = this.props.popupContainer[PopupMgr.SAVE_ARTICLE_POPUP];
+        if (saveArticlePopup) {
+            saveArticlePopup.forEach(data => {
+                children.push(<ArticleSavePopupComponent key="articleSave" categoryChange={() => {
+                }} apply={(submitData) => this.props.saveArticle(submitData, data)} close={this.props.close}>
+                </ArticleSavePopupComponent>);
+            });
+
+        }
+        /*  if (popupContainer) {
+
+          }
+
+          this.props.msgArr.forEach((msg, key) => {
+              children.push(<p key={key}>{msg.data}</p>)
+          });*/
+
+        return <>
+            {children}
+        </>
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
         type: state.popup.type,
-        data: state.popup.data,
+        popupContainer: state.popup.popupContainer,
     }
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         close: (e) => {
-            dispatch(PopupClose());
+            dispatch(ClosePopupSaveArticle());
         },
-        saveBlog: (submitData, propData) => {
-            dispatch(SaveBlogRequest({params: Object.assign({}, submitData, propData)}));
+        saveArticle: (submitData, propData) => {
+            dispatch(SaveArticleRequest({params: Object.assign({}, submitData, propData)}));
         }
     }
 };

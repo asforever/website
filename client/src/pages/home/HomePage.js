@@ -9,7 +9,7 @@ class HomePage extends React.Component {
 
     render() {
         const routerLink = router.children.map((list, key) => {
-            if (!list.component || list.name === "home"|| list.name === "blogEditor") return;
+            if (!list.component || list.name === "home"|| list.name === "articleEditor") return;
             return <li key={key}><Link to={list.path}>{list.path}</Link></li>
         });
         return <div className={HomeCSS.container}>{routerLink}</div>

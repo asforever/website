@@ -1,8 +1,8 @@
 const express = require('express');
-const {Blog} = require('../../../mongoose');
+const {Article} = require('../../../mongoose');
 
 const router = express.Router();
-router.post('/save_blog', async (req, res, next) => {
+router.post('/save_article', async (req, res, next) => {
 
     const {title, summary, content, category} = req.body;
     if (!title || !summary || !content || !category) {
@@ -11,19 +11,19 @@ router.post('/save_blog', async (req, res, next) => {
         return;
     }
 
-    const blog = await Blog.findOne({title: title}).catch((v, err) => {
+    const article = await Article.findOne({title: title}).catch((v, err) => {
         if (err) {
             console.error(err)
         }
     });
 
-    if (blog) {
-        blog.summary = summary;
-        blog.content = content;
-        blog.category = category;
-        await blog.save();
+    if (article) {
+        article.summary = summary;
+        article.content = content;
+        article.category = category;
+        await article.save();
     } else {
-        Blog.create({title: title, summary: summary, content: content, category: category});
+        Article.create({title: title, summary: summary, content: content, category: category});
     }
     res.end();
 });

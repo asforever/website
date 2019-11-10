@@ -1,9 +1,9 @@
 const express = require('express');
-const {Blog} = require('../../../mongoose');
+const {Article} = require('../../../mongoose');
 
 const router = express.Router();
-router.get('/blogCategory', (req, res, next) => {
-    Blog.aggregate([
+router.get('/article_category', (req, res, next) => {
+    Article.aggregate([
         {$group: {_id: "$category"}},
         {$project: {_id: 0, category: "$_id"}}
     ]).then(result => {

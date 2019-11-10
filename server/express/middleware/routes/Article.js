@@ -1,11 +1,11 @@
 const express = require('express');
-const {Blog} = require('../../../mongoose');
+const { Article} = require('../../../mongoose');
 
 const router = express.Router();
-router.get('/blog/:category*?', (req, res, next) => {
-    //await Blog.deleteMany({});
+router.get('/article/:category*?', (req, res, next) => {
+    //await Article.deleteMany({});
     let match = req.params.category ? {"category": req.params.category} : {};
-    Blog.aggregate([{
+    Article.aggregate([{
         $match: match,
     }]).then(result => {
         res.send(result);

@@ -26,7 +26,7 @@ export default class FetchUtil {
             }
         }
 
-        return new Promise(r => {
+        return new Promise((r, j) => {
             fetch(url, defaultOption).then(response => {
                 switch (format) {
                     case FileFormat.TEXT:
@@ -48,6 +48,8 @@ export default class FetchUtil {
                         r(response.json());
                         break;
                 }
+            }).catch(err => {
+                j(err)
             });
         });
     }

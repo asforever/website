@@ -1,13 +1,20 @@
-//打开保存blog的弹框
+//打开保存article的弹框
 import {PopupActionType} from "../ActionType";
-export const PopupSaveBlog = (data) => ({
-    type: PopupActionType.POPUP_SAVE_BLOG,
+
+export const PopupSaveArticle = (data) => ({
+    type: PopupActionType.POPUP_SAVE_ARTICLE,
     data: data,
 });
+export const ClosePopupSaveArticle = () => ({
+    type: PopupActionType.CLOSE_POPUP_SAVE_ARTICLE,
+});
 
-//关闭弹窗
-export const PopupClose = () => ({
-    type: PopupActionType.POPUP_CLOSE,
+export const PopupMsg = (data) => ({
+    type: PopupActionType.POPUP_MSG,
+    data: data,
+});
+export const ClosePopupMsg = () => ({
+    type: PopupActionType.CLOSE_POPUP_MSG,
 });
 
 
