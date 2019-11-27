@@ -1,11 +1,10 @@
 import {FileFormat} from "./FileFormat";
 
 export default class FetchUtil {
-    static fetch({url = "", method = "GET", params, format}) {
-
+    static fetch({url = "", method = "GET", params, format, cookie = false}) {
         let defaultOption = {
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: 'same-origin', // include, same-origin, *omit
+            credentials: cookie ? "include" : "same-origin", // include, same-origin, *omit
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
@@ -16,7 +15,7 @@ export default class FetchUtil {
         };
 
         let newURL = url;
-        if (method === "POST") {
+        if (method === "POST" || method === "DELETE") {
             defaultOption.body = JSON.stringify(params || {});
         } else if (method === "GET") {
             if (params && params instanceof Array) {
@@ -27,7 +26,7 @@ export default class FetchUtil {
         }
 
         return new Promise((r, j) => {
-            fetch(url, defaultOption).then(response => {
+            fetch(newURL, defaultOption).then(response => {
                 switch (format) {
                     case FileFormat.TEXT:
                         response.text().then(d => {

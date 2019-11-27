@@ -13,7 +13,8 @@ router.post('/save_article', async (req, res, next) => {
 
     const article = await Article.findOne({title: title}).catch((v, err) => {
         if (err) {
-            console.error(err)
+            res.end();
+            console.error(err);
         }
     });
 
@@ -25,7 +26,7 @@ router.post('/save_article', async (req, res, next) => {
     } else {
         Article.create({title: title, summary: summary, content: content, category: category});
     }
-    res.end();
+    res.send(Article);
 });
 
 module.exports = router;

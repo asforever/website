@@ -26,7 +26,7 @@ class Middleware {
         if (!server || this.isRun) return;
         this.isRun = true;
         server.use(headerMid);
-        server.use(express.static(path.resolve(__dirname, "../static/build")));
+        server.use(express.static(path.resolve(__dirname, "../static/dist")));
         server.use(express.static(path.resolve(__dirname, "../static/resource")));
         server.use(cookieParser());
         server.use(bodyParser());

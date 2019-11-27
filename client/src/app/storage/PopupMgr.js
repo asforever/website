@@ -3,10 +3,12 @@ export class PopupMgr {
     static MSG_POPUP = 1;
 
     constructor() {
-        this.init();
+        this.reset();
     }
 
-    init() {
+    reset(type) {
+        if (type !== undefined) this.popupContainer[type] = [];
+
         this.popupContainer = {
             [PopupMgr.SAVE_ARTICLE_POPUP]: [],
             [PopupMgr.MSG_POPUP]: [],
@@ -14,7 +16,9 @@ export class PopupMgr {
     }
 
     addPopup(type, data) {
-        this.popupContainer[type].push(data);
+        let container = this.popupContainer;
+        container[type].push(data);
+        if(container[PopupMgr.MSG_POPUP].length>=3)container[PopupMgr.MSG_POPUP].shift();
     }
 
     deletePopup(type) {
@@ -23,7 +27,7 @@ export class PopupMgr {
 
     clone() {
         const result = new PopupMgr();
-        result.popupContainer = this.popupContainer;
+        result.popupContainer = Object.assign({}, this.popupContainer);
         return result;
     }
 

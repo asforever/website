@@ -5,6 +5,7 @@ const router = express.Router();
 router.get('/article/:category*?', (req, res, next) => {
     //await Article.deleteMany({});
     let match = req.params.category ? {"category": req.params.category} : {};
+
     Article.aggregate([{
         $match: match,
     }]).then(result => {
