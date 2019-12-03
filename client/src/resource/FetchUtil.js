@@ -1,7 +1,7 @@
 import {FileFormat} from "./FileFormat";
 
 export default class FetchUtil {
-    static fetch({url = "", method = "GET", params, format, cookie = false}) {
+    static async fetch({url = "", method = "GET", params, format, cookie = false}) {
         let defaultOption = {
             cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
             credentials: cookie ? "include" : "same-origin", // include, same-origin, *omit
@@ -24,8 +24,7 @@ export default class FetchUtil {
                 })
             }
         }
-
-        return new Promise((r, j) => {
+        let result = await new Promise((r, j) => {
             fetch(newURL, defaultOption).then(response => {
                 switch (format) {
                     case FileFormat.TEXT:
@@ -51,5 +50,6 @@ export default class FetchUtil {
                 j(err)
             });
         });
+        return result;
     }
 }
