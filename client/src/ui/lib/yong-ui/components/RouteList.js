@@ -5,10 +5,10 @@ import {Route, Redirect} from "react-router-dom"
 function RouteList(props) {
     let {routeList} = props;
     return (routeList.map(route => {
-        return <Route exact
+        return <Route
                       key={route.name}
                       path={route.path}
-                      render={(props) => {
+                      component={(props) => {
                           return Boolean(route.redirect) ?
                               <Redirect to={{pathname: route.redirect}}>
                               </Redirect> :

@@ -23,13 +23,10 @@ export default {
         padding: `0.3em`,
     },
     listButton: {
-        display: `flex`,
-        padding: `0.5em`,
         userSelect: `none`,
-        backgroundColor: `#444444`,
         '&:hover': {
-            color: `#777`,
-        },
+            backgroundColor: `#ccc`,
+        }
     },
     listButtonActive: {
         backgroundColor: `#222222`,
@@ -41,6 +38,7 @@ export default {
         display: `flex`,
         userSelect: `none`,
         color: `#757374`,
+        cursor: `pointer`,
         '&:hover': {
             textDecorationLine: `underline`
         },
@@ -48,7 +46,14 @@ export default {
     linkButtonActive: {
         color: `#0000cc`,
     },
-
+    iconButton: {
+        width: `1em`,
+        height: `1em`,
+        padding: `2px`,
+        '&:hover': {
+            fill: `#1a1f6e`,
+        }
+    },
     dividerHor: {
         height: "1px",
         backgroundColor: `rgba(0, 0, 0, 0.12)`,
@@ -72,8 +77,26 @@ export default {
         color: `#282327`,
     },
     "typography-h3": {
-        fontSize: `1em`,
+        fontSize: `0.9em`,
         margin: `0.1em 0 0.1em 0.3em`,
         color: `#757374`,
     },
+    Icon: {
+        width: `1em`,
+        height: `1em`,
+        '& hover': {
+            fill: '#6061cb',
+        }
+    },
+    iconActive: {
+        width: `1em`,
+        height: `1em`,
+        fill: '#474547',
+        stroke: `black`,
+        strokeWidth: `2`
+    },
+    link: {
+        margin: `0.5em`,
+        color: `#6d62cb`,
+    }
 }

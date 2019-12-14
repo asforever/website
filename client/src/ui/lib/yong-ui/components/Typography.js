@@ -17,4 +17,4 @@ Typography.propTypes = {
     variant: PropTypes.string,
 };
 
-export {Typography};
+export default Typography;

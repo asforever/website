@@ -37,5 +37,4 @@ class StateManager {
 
 const stateManager = new StateManager();
 
-
 export default stateManager;

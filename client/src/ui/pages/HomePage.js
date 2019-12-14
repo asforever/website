@@ -1,14 +1,6 @@
 import React from "react";
 import {Container} from "../lib/yong-ui/components/Container";
-import {Paper} from "../lib/yong-ui/components/Paper";
-import {Typography} from "../lib/yong-ui/components/Typography";
-import {List} from "../lib/yong-ui/components/List";
-import {PhotoFrame} from "../lib/yong-ui/components/PhotoFrame";
-import {createStyles} from "../lib/yong-ui/util";
-import {ListButton} from "../lib/yong-ui/components/ListButton";
-import HeadBar from "../component/HeadBar";
-import {Divider} from "../lib/yong-ui/components/Divider";
-import {LinkButton} from "../lib/yong-ui/components/LinkButton";
+import {createStyles} from "../lib/yong-ui/util";;
 
 let useStyles = createStyles((theme) => ({
     paper: {

@@ -1,25 +1,21 @@
 import React, {useState} from "react";
-import clsx from "clsx";
 import stateManager from "../state/stateManager";
 import presetKeys from "../state/presetKeys";
-import PropTypes from "prop-types";
-import {BaseButton} from "./BaseButton";
+import ThrottleButton from "./ThrottleButton";
+import clsx from "clsx";
 
-function LinkButtonHoc(WrapComponent) {
-    return function (props) {
-        const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
-        const classes = presetSheet.classes;
-        const {className, onClick, children} = props;
-        const baseClassName = classes.linkButton;
-        const activeClassName = classes.linkButtonActive;
-        return (<WrapComponent {...{className, baseClassName, activeClassName, children, onClick}} >
-        </WrapComponent>)
-    }
+
+function LinkButton(props) {
+    const {onClick, children} = props;
+    const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
+    const className = clsx([presetSheet.classes.link, props.className]);
+
+    return (<a href="#"
+               children={children}
+               className={className}
+               onClick={onClick}>
+    </a>)
 }
 
 
-const LinkButton = LinkButtonHoc(BaseButton);
-LinkButton.propTypes = {
-    onClick: PropTypes.func,
-};
-export {LinkButton};
+export default ThrottleButton(LinkButton);

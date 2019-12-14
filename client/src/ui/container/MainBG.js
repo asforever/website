@@ -4,15 +4,17 @@ import {Container} from "../lib/yong-ui/components/Container";
 import image from "../../assets/bk_wrapper.png";
 
 const useStyles = createStyles((theme) => ({
-    opacityBG: {
-        width: `60vw`,
-        height: `calc(100vh - 4em)`,
+    container: {
         minWidth: `30em`,
+    },
+    opacityBG: {
+        width: `60em`,
+        minHeight: `calc(120vh - 4em)`,
         backgroundColor: `#aaaaaaaa`,
         padding: `0.5em`,
-        margin: `1em`,
+        margin: `2em`,
     },
-    container: {
+    container2: {
         width: `100%`,
         height: `100%`,
         backgroundColor: `#fff`,
@@ -31,15 +33,15 @@ const useStyles = createStyles((theme) => ({
 
 function MainBG(props) {
     const classes = useStyles();
-    return (<Container>
+    return (<Container className={classes.container}>
         <div className={classes.opacityBG}>
-            <div className={classes.container}>
+            <div className={classes.container2}>
                 <div>
                     <div className={classes.bkWrapper}>
-                        <img src={image}></img>
+                        <img alt={"img"} src={image}/>
                     </div>
                 </div>
-                <div className={classes.context} children={props.children}></div>
+                <div className={classes.context} children={props.children}/>
             </div>
         </div>
     </Container>)

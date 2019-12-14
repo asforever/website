@@ -62,8 +62,25 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(png|svg|jpg|gif)$/,
+                test: /\.(png|jpg|gif)$/,
                 use: ['file-loader']
+            },
+            {
+                test: /\.svg$/,
+                use: [
+                    "babel-loader",
+                    {
+                        loader: "react-svg-loader",
+                        options: {
+                            svgo: {
+                                plugins: [
+                                    { removeTitle: false }
+                                ],
+                                floatPrecision: 2
+                            }
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,

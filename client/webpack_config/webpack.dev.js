@@ -8,7 +8,7 @@ const common = require('./webpack.common.js');
 
 const devConfig = merge(common, {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'cheap-module-inline-source-map',
     devServer: {
         contentBase: './dist'
     },

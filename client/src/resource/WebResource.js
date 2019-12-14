@@ -1,18 +1,40 @@
-export default class WebResource {
+import FetchUtil from "./FetchUtil";
+import {WebURL} from "./WebURL";
 
-    getMenuCategory() {
-        if (!this.menuBar) {
-            this.menuBar = ["主页", "文章", "案例", "帮助"];
-        }
-        return this.menuBar;
-    }
-    async getArticleCategory() {
-        if (!this.articleCategory) {
-            this.articleCategory = ["主页", "文章", "案例", "帮助"];
-        }
-        return this.articleCategory;
-    }
-}
 
-const webResource = new WebResource();
-export default webResource;
+const createArticle = async (params) => {
+    const options = {
+        url: WebURL.SAVE_ARTICLE,
+        params: params,//{title,category,summary,content}
+        method: "POST"
+    };
+    return await FetchUtil.fetch(options);
+};
+
+const getArticleCategory = async () => {
+    const options = {
+        url: WebURL.ARTICLE_CATEGORY,
+    };
+    return await FetchUtil.fetch(options);
+};
+
+const getArticles = async (params) => {
+    const category = params.category;
+    const options = {
+        url: WebURL.ARTICLE,
+        params: [category],
+    };
+    return await FetchUtil.fetch(options);
+};
+
+const deleteArticle = async (params) => {
+    let {title, category} = params;
+    const options = {
+        url: WebURL.DELETE_ARTICLE,
+        params: [category, title],
+    };
+    return await FetchUtil.fetch(options);
+};
+
+
+export default {createArticle, getArticles, getArticleCategory, deleteArticle};

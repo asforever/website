@@ -2,7 +2,7 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import PropTypes from "prop-types";
 
-import {LinkButton} from "../lib/yong-ui/components/LinkButton";
+import LinkButton from "../lib/yong-ui/components/LinkButton";
 import {createStyles} from "../lib/yong-ui/util";
 
 const useStyles = createStyles((theme) => ({

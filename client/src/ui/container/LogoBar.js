@@ -1,10 +1,10 @@
 import React from "react";
 import {createStyles} from "../lib/yong-ui/util";
-import {Typography} from "../lib/yong-ui/components/Typography";
+import Typography from "../lib/yong-ui/components/Typography";
 
 const useStyles = createStyles((theme) => ({
     logoContainer: {
-        marginBottom: `2em`,
+        margin: `1.5em 0em 2.5em 0em`,
     }
 }));
 

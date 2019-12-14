@@ -1,6 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {createStyles} from "../lib/yong-ui/util";
+import {RouteList} from "../lib/yong-ui/components/RouteList";
+import router from "../router/router";
+import RightBar from "./RightBar";
 
 
 const useStyles = createStyles((theme) => ({
@@ -8,7 +10,8 @@ const useStyles = createStyles((theme) => ({
         display: `flex`,
         justifyContent: `space-between`,
         width: `100%`,
-        marginTop: `1em`,
+        marginTop: `0.2em`,
+        borderTop: `1px dashed #ccc`,
     },
     leftContainer: {
         padding: `1em`,
@@ -17,31 +20,24 @@ const useStyles = createStyles((theme) => ({
     rightContainer: {
         width: `15em`,
         padding: `1em`,
-        borderLeft: `1px Dashed #ccc`,
+        height: `100vh`,
+        borderLeft: `1px dashed #ccc`,
     },
 }));
 
 function ContentBar(props) {
     const classes = useStyles();
-    const {leftBar, rightBar} = props;
-
-    const leftBarDom = leftBar();
-    const rightBarDom = rightBar();
+    const routerArr = Object.values(router.main.children);
     return (
         <div className={classes.contentContainer}>
             <div className={classes.leftContainer}>
-                {leftBarDom}
+                <RouteList routeList={routerArr}/>
             </div>
             <div className={classes.rightContainer}>
-                {rightBarDom}
+                <RightBar/>
             </div>
         </div>
     )
 }
-
-ContentBar.propTypes = {
-    leftBar: PropTypes.func.isRequired,
-    rightBar: PropTypes.func.isRequired
-};
 
 export default ContentBar;

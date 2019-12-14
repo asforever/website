@@ -2,6 +2,7 @@ import React from "react";
 import {createStyles} from "../lib/yong-ui/util";
 import PropTypes from "prop-types";
 import RouteBar from "./RouteBar";
+import router from "../router/router";
 
 const useStyles = createStyles((theme) => ({
     headContainer: {
@@ -14,11 +15,11 @@ const useStyles = createStyles((theme) => ({
 
 function HeadBar(props) {
     const classes = useStyles();
-    const {routes} = props;
+    const routerArr = Object.values(router.main.children);
 
     return (
         <div className={classes.headContainer}>
-            <RouteBar routes={routes}/>
+            <RouteBar routes={routerArr}/>
         </div>
     )
 }

@@ -1,25 +1,19 @@
 import React, {useState} from "react";
-import clsx from "clsx";
 import stateManager from "../state/stateManager";
 import presetKeys from "../state/presetKeys";
-import PropTypes from "prop-types";
-import {BaseButton} from "./BaseButton";
+import ThrottleButton from "./ThrottleButton";
+import {createStyles} from "../util";
+import clsx from "clsx";
 
-function ListButtonHoc(WrapComponent) {
-    return function (props) {
-        const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
-        const classes = presetSheet.classes;
-        const {className, onClick, children} = props;
-        const baseClassName = classes.listButton;
-        const activeClassName = classes.listButtonActive;
-        return (<WrapComponent {...{className, baseClassName, activeClassName, children, onClick}} >
-        </WrapComponent>)
-    }
+function ListButton(props) {
+    const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
+    const className = clsx([presetSheet.classes.listButton, props.className]);
+    const {onClick, children} = props;
+
+    return (<div onClick={onClick}
+                 children={children}
+                 className={className}>
+    </div>);
 }
 
-
-const ListButton = ListButtonHoc(BaseButton);
-ListButton.propTypes = {
-    onClick: PropTypes.func,
-};
-export {ListButton};
+export default ThrottleButton(ListButton);
