@@ -1,14 +1,23 @@
 import React, {useState} from "react";
 import clsx from "clsx";
 import PropTypes from "prop-types";
-
-import stateManager from "../state/stateManager";
-import presetKeys from "../state/presetKeys";
 import ThrottleButton from "./ThrottleButton";
+import {createStyles} from "../util";
+
+let useStyles = createStyles((theme) => ({
+    iconButton: {
+        width: `1em`,
+        height: `1em`,
+        padding: `2px`,
+        '&:hover': {
+            fill: `#1a1f6e`,
+        }
+    },
+}));
 
 function _IconButton(props) {
-    const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
-    const className = clsx([presetSheet.classes.iconButton, props.className]);
+    const classes = useStyles();
+    const className = clsx([classes.iconButton, props.className]);
     const {onClick, icon} = props;
 
     return (<div onClick={onClick}

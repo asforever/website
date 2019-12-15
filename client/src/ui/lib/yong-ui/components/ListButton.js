@@ -1,13 +1,23 @@
 import React, {useState} from "react";
-import stateManager from "../state/stateManager";
-import presetKeys from "../state/presetKeys";
 import ThrottleButton from "./ThrottleButton";
 import {createStyles} from "../util";
 import clsx from "clsx";
 
+let useStyles = createStyles((theme) => ({
+    linkButton: {
+        display: `flex`,
+        userSelect: `none`,
+        color: `#757374`,
+        cursor: `pointer`,
+        '&:hover': {
+            textDecorationLine: `underline`
+        },
+    },
+}));
+
 function ListButton(props) {
-    const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
-    const className = clsx([presetSheet.classes.listButton, props.className]);
+    const classes = useStyles();
+    const className = clsx([classes.listButton, props.className]);
     const {onClick, children} = props;
 
     return (<div onClick={onClick}

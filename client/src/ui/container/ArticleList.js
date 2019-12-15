@@ -12,12 +12,14 @@ import {connect} from "react-redux";
 const useStyles = createStyles(theme => ({
     container: {
         width: `100%`,
-        height: `4em`,
+        height: `fit-content`,
+        minHeight: `4em`,
         overflow: `hidden`,
     },
     head: {
         display: `flex`,
-        justifyContent: `space-between`
+        justifyContent: `space-between`,
+        marginBottom: `0.7em`,
     },
     headRight: {
         display: `flex`,

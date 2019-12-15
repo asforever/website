@@ -1,11 +1,17 @@
 import React from "react";
 import clsx from "clsx";
-import stateManager from "../state/stateManager";
-import presetKeys from "../state/presetKeys";
+import {createStyles} from "../util";
+
+let useStyles = createStyles((theme) => ({
+    container: {
+        display: `flex`,
+        justifyContent: `center`,
+    },
+}));
 
 function Container(props) {
-    const presetSheet = stateManager.getSheet(presetKeys.PRESET_KEY);
-    const className = clsx([presetSheet.classes.container, props.className]);
+    const classes = useStyles();
+    const className = clsx([classes.container, props.className]);
 
     return (<div  {...props} className={className}>
     </div>)
