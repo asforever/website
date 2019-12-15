@@ -53,7 +53,7 @@ function* ArticleCategorySaga() {
 function* DeleteArticleSaga() {
     while (true) {
         const action = yield take(FetchActionType.DELETE_ARTICLE_REQUEST);
-        const result = yield call(articleMgr.deleteArticle.bind(articleMgr), action.params);
+        const result = yield call(articleMgr.deleteArticles.bind(articleMgr), action.params);
         if (result.error) {
             yield put(DeleteArticleError());
         } else {

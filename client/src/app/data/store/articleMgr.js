@@ -36,30 +36,35 @@ class ArticleMgr {
 
     async createArticle(params) {
         let {title, category} = params;
-        let child = this.articleTree.getChild(category);
-        if (!child) child = this.createArticleCategory(category);
-        let articles = child.data.articles;
         let article = await WebResource.createArticle(params);
-        if (!articles) articles = this.createArticleCategory(category);
-        articles[title] = article;
+        if (!article.error) {
+            let child = this.articleTree.getChild(category);
+            if (!child) child = this.createArticleCategory(category);
+            let articles = child.data.articles || {};
+            articles[title] = article;
+            child.data.articles = articles;
+        }
         return article;
     }
 
     async deleteArticles(params) {
-        let {title, category} = params;
-        let children = this.articleTree.children;
-        let child = this.articleTree.children[category];
-        if (child) {
-            let articles = child.data.articles;
-            if (title) {
-                delete articles[title];
-            } else {
-                delete children[category];
-            }
-            if (!Object.keys(articles).length) delete articles[title];
-            await WebResource.deleteArticle(params);
-        }
+        let result = await WebResource.deleteArticle(params);
+        if (!result.error) {
+            let {title, category} = params;
+            let children = this.articleTree.children;
+            let child = this.articleTree.children[category];
 
+            if (child) {
+                let articles = child.data.articles;
+                if (title) {
+                    delete articles[title];
+                } else {
+                    delete children[category];
+                }
+                if (articles && !Object.keys(articles).length) delete articles[title];
+            }
+        }
+        return result;
     }
 
     createArticleCategory(category) {

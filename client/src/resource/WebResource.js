@@ -32,6 +32,7 @@ const deleteArticle = async (params) => {
     const options = {
         url: WebURL.DELETE_ARTICLE,
         params: [category, title],
+        method: "DELETE",
     };
     return await FetchUtil.fetch(options);
 };

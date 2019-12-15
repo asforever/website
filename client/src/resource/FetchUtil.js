@@ -15,9 +15,9 @@ export default class FetchUtil {
         };
 
         let newURL = url;
-        if (method === "POST" || method === "DELETE") {
+        if (method === "POST") {
             defaultOption.body = JSON.stringify(params || {});
-        } else if (method === "GET") {
+        } else if (method === "GET" || method === "DELETE") {
             if (params && params instanceof Array) {
                 params.forEach(param => {
                     newURL += param + '/';

@@ -5,7 +5,7 @@ import {connect} from "react-redux";
 import Typography from "../lib/yong-ui/components/Typography";
 import LinkButton from "../lib/yong-ui/components/LinkButton";
 import ResourceNode from "../../app/data/store/ResourceNode";
-import {FetchArticleCategoryRequest, FetchArticleRequest} from "../store/action";
+import {DeleteArticleRequest, FetchArticleCategoryRequest, FetchArticleRequest} from "../store/action";
 import {withRouter} from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
@@ -33,7 +33,10 @@ const useStyles = createStyles((theme) => ({
 
 function RightBar(props) {
     const classes = useStyles();
-    const {initResourceTree, resourceTree, fetchArticles, history, location} = props;
+    const {
+        initResourceTree, deleteArticles, fetchArticles,
+        history, location, resourceTree
+    } = props;
     useEffect(() => {
         initResourceTree();
     }, []);
@@ -57,7 +60,7 @@ function RightBar(props) {
     };
     const _handDelete = (node) => {
         return (event) => {
-            console.log(node);
+            deleteArticles(node.data.id);
         }
     };
 
@@ -102,9 +105,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
             dispatch(FetchArticleCategoryRequest());
         },
         fetchArticles(category) {
-
             dispatch(FetchArticleRequest({category}))
-        }
+        },
+        deleteArticles(category) {
+            dispatch(DeleteArticleRequest({category}))
+        },
     }
 };
 

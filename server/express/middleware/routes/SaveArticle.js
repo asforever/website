@@ -6,15 +6,14 @@ router.post('/save_article', async (req, res, next) => {
 
     const {title, summary, content, category} = req.body;
     if (!title || !summary || !content || !category) {
-        res.writeHead(400, ' Bad Request', {'content-type': 'text/plain'});
-        res.end();
+        //res.writeHead(400, ' Bad Request', {'content-type': 'text/plain'});
+        res.send({error: "参数错误"});
         return;
     }
 
-    const article = await Article.findOne({title: title}).catch((v, err) => {
+    let article = await Article.findOne({title: title}).catch((v, err) => {
         if (err) {
-            res.end();
-            console.error(err);
+            res.send({error: "获取数据失败"});
         }
     });
 
@@ -24,9 +23,9 @@ router.post('/save_article', async (req, res, next) => {
         article.category = category;
         await article.save();
     } else {
-        Article.create({title: title, summary: summary, content: content, category: category});
+        article = await Article.create({title: title, summary: summary, content: content, category: category});
     }
-    res.send(Article);
+    res.send(article);
 });
 
 module.exports = router;

@@ -53,7 +53,7 @@ function ArticleList(props) {
         </div>
 
 
-        {!showDetail && <Typography>{summary}</Typography>}h
+        {!showDetail && <Typography>{summary}</Typography>}
         {showDetail && <ReactMarkDown source={content}></ReactMarkDown>}
     </Paper>)
 }
