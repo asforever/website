@@ -50,7 +50,7 @@ function RightBar(props) {
             fetchArticles(node.data.id);
             path = '/articles';
         }
-        if (path && "/main" + path !== location.pathname) history.push("/main" + path);
+        if (path && "/home" + path !== location.pathname) history.push("/home" + path);
 
     };
     const _handEditor = (node) => {
@@ -86,7 +86,7 @@ function RightBar(props) {
 const mapStateToProps = (state, ownProps) => {
 
     const resourceTree = new ResourceNode({id: `列表`});
-    const homeNode = new ResourceNode({id: "主页", path: `/home`});
+    const homeNode = new ResourceNode({id: "主页", path: `/introduction`});
     const exampleNode = new ResourceNode({id: "案例", path: `/examples`});
     const helpNode = new ResourceNode({id: "帮助", path: `/help`});
     resourceTree.addChild(homeNode);

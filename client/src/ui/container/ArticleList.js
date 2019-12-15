@@ -6,11 +6,14 @@ import Typography from "../lib/yong-ui/components/Typography";
 import {Paper} from "../lib/yong-ui/components/Paper";
 import LinkButton from "../lib/yong-ui/components/LinkButton";
 import {createStyles} from "../lib/yong-ui/util";
+import {DeleteArticleRequest} from "../store/action";
+import {connect} from "react-redux";
 
 const useStyles = createStyles(theme => ({
     container: {
         width: `100%`,
-        height: `fit-content`
+        height: `4em`,
+        overflow: `hidden`,
     },
     head: {
         display: `flex`,
@@ -30,8 +33,8 @@ function ArticleList(props) {
     const classes = useStyles();
     const [showDetail, setShowDetail] = useState(false);
     const article = props.article;
-    const {title, summary, content} = article;
-    const history = props.history;
+    const {title, category, summary, content} = article;
+    const {history, dispatch} = props;
 
     const toggleDetail = () => {
         setShowDetail(!showDetail);
@@ -40,7 +43,7 @@ function ArticleList(props) {
         history.push("/editor")
     };
     const delArticle = () => {
-        history.push("/editor")
+        dispatch(DeleteArticleRequest({category, title}));
     };
 
     return (<Paper className={classes.container}>
@@ -62,4 +65,4 @@ ArticleList.propTypes = {
     article: PropTypes.object.isRequired
 };
 
-export default withRouter(ArticleList);
+export default connect()(withRouter(ArticleList));

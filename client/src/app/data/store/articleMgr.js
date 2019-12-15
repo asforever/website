@@ -4,7 +4,6 @@ import ResourceNode from "./ResourceNode";
 class ArticleMgr {
     constructor() {
         this.articleTree = new ResourceNode({id: `文章`, path: `/articles`});
-        this.curCategory = "";
     }
 
     async getArticleCategory() {
@@ -22,15 +21,19 @@ class ArticleMgr {
 
     async getArticles(category) {
         let child = this.articleTree.getChild(category);
-        if (!child) return null;
+        if (!child) return {};
 
         let articles = child.data.articles;
         if (!articles) {
             let data = await WebResource.getArticles({category: category});
             if (data.error) return data;
-            articles = child.data.articles = data;//bug
+
+            articles = {};
+            data.forEach(article => {
+                articles[article.title] = article;
+            });
+            child.data.articles = articles;
         }
-        this.curCategory = category;
         return articles;
     }
 
@@ -61,7 +64,9 @@ class ArticleMgr {
                 } else {
                     delete children[category];
                 }
-                if (articles && !Object.keys(articles).length) delete articles[title];
+                if (articles && !Object.keys(articles).length) {
+                    delete children[title];
+                }
             }
         }
         return result;

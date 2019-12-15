@@ -1,6 +1,6 @@
 import React from "react";
 import {createStyles} from "../lib/yong-ui/util";
-import {RouteList} from "../lib/yong-ui/components/RouteList";
+import RouteList from "../lib/yong-ui/components/RouteList";
 import router from "../router/router";
 import RightBar from "./RightBar";
 
@@ -16,6 +16,7 @@ const useStyles = createStyles((theme) => ({
     leftContainer: {
         padding: `1em`,
         width: `60%`,
+        minWidth: `15em`,
     },
     rightContainer: {
         width: `15em`,
@@ -27,7 +28,7 @@ const useStyles = createStyles((theme) => ({
 
 function ContentBar(props) {
     const classes = useStyles();
-    const routerArr = Object.values(router.main.children);
+    const routerArr = Object.values(router.home.children);
     return (
         <div className={classes.contentContainer}>
             <div className={classes.leftContainer}>

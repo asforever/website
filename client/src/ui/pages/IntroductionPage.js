@@ -62,11 +62,11 @@ let useStyles = createStyles((theme) => ({
     },
 }));
 
-function HomePage(props) {
+function IntroductionPage(props) {
     const classes = useStyles().classes;
     return (<Container>
-        home
+        IntroductionPage
     </Container>)
 }
 
-export default HomePage;
+export default IntroductionPage;

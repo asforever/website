@@ -1,14 +1,14 @@
-import HomePage from "../pages/HomePage";
+import IntroductionPage from "../pages/IntroductionPage";
 import ArticlePage from "../pages/ArticlePage";
 import ExamplePage from "../pages/ExamplePage";
 import HelpPage from "../pages/HelpPage";
 import EditorPage from "../pages/EditorPage";
 import MainPage from "../pages/MainPage";
+import EmptyPage from "../pages/EmptyPage";
 
 export default {
     root: {
         name: "root",
-        path: "/",
         redirect: "/editor",
     },
     editor: {
@@ -16,29 +16,34 @@ export default {
         path: "/editor",
         component: EditorPage,
     },
-    main: {
-        name: "main",
-        path: "/main",
+    home: {
+        name: "home",
+        path: "/home",
         component: MainPage,
         children: {
-            home: {
+            empty: {
+                name: "empty",
+                path: "",
+                component: EmptyPage,
+            },
+            introduction: {
                 name: "主页",
-                path: "/main/home",
-                component: HomePage,
+                path: "/home/introduction",
+                component: IntroductionPage,
             },
             articles: {
                 name: "文章",
-                path: "/main/articles",
+                path: "/home/articles",
                 component: ArticlePage,
             },
             examples: {
                 name: "案例",
-                path: "/main/examples",
+                path: "/home/examples",
                 component: ExamplePage,
             },
             help: {
                 name: "帮助",
-                path: "/main/help",
+                path: "/home/help",
                 component: HelpPage,
             },
         }

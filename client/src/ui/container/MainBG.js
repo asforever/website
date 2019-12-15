@@ -5,7 +5,7 @@ import image from "../../assets/bk_wrapper.png";
 
 const useStyles = createStyles((theme) => ({
     container: {
-        minWidth: `30em`,
+        minWidth: `40em`,
     },
     opacityBG: {
         width: `60em`,

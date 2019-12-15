@@ -19,10 +19,10 @@ let useStyles = createStyles((theme) => ({
 
 function ArticlePage(props) {
     const classes = useStyles();
-    const {articles = []} = props;
+    const {articles = {}} = props;
 
     return (<Container className={classes.container}>
-        {articles.map(article => (
+        {Object.values(articles).map(article => (
             <ArticleList article={article} className={classes.listContainer} key={article.title}/>
         ))}
 

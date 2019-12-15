@@ -15,7 +15,7 @@ const useStyles = createStyles((theme) => ({
 
 function HeadBar(props) {
     const classes = useStyles();
-    const routerArr = Object.values(router.main.children);
+    const routerArr = Object.values(router.home.children);
 
     return (
         <div className={classes.headContainer}>

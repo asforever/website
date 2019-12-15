@@ -10,11 +10,15 @@ const articleReducer = {
 const ArticleReducer = (state = articleReducer, action) => {
     switch (action.type) {
         case FetchActionType.FETCH_ARTICLE_CATEGORY_SUCCESS:
+            console.log(FetchActionType.FETCH_ARTICLE_CATEGORY_SUCCESS);
             return Object.assign({}, state, articleReducer);
         case FetchActionType.FETCH_ARTICLE_SUCCESS:
+            console.log(FetchActionType.FETCH_ARTICLE_SUCCESS);
             return Object.assign({}, state, {curArticles: action.data});
-        //articleMgr.loadArticles(data);
-        //case FetchActionType.DELETE_ARTICLE_SUCCESS:
+        case FetchActionType.DELETE_ARTICLE_SUCCESS:
+            console.log(FetchActionType.DELETE_ARTICLE_SUCCESS);
+            console.log(state);
+            return Object.assign({}, state);
 
     }
     return state;
