@@ -6,6 +6,9 @@ import LinkButton from "../lib/yong-ui/components/LinkButton";
 import {createStyles} from "../lib/yong-ui/util";
 
 const useStyles = createStyles((theme) => ({
+    container: {
+        display: `flex`,
+    },
     item: {
         margin: `0.5em 1em 0.5em 1em`,
     }
@@ -25,13 +28,13 @@ function RouteBar(props) {
         }
     };
 
-    return (<>{routes.map((route) => {
+    return (<div className={classes.container}>{routes.map((route) => {
         if (!route.path) return;
         return <LinkButton key={route.name}
                            onClick={handleClick(route.path)}
                            className={classes.item}>{route.name}
         </LinkButton>
-    })}</>)
+    })}</div>)
 }
 
 RouteBar.propTypes = {

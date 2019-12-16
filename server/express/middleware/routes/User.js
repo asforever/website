@@ -14,7 +14,7 @@ router.post('/user', (req, res, next) => {
     } else {
         res.cookie('username', "");
         res.cookie('password', "");
-        res.end();
+        res.send({error: "用户或密码错误"});
     }
 });
 

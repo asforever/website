@@ -18,6 +18,10 @@ export const FetchActionType = {
     FETCH_USER_REQUEST: "fetch user request",
     FETCH_USER_SUCCESS: "fetch user success",
     FETCH_USER_ERROR: "fetch user error",
+
+    REGISTERED_USER_REQUEST: "registered user request",
+    REGISTERED_USER_SUCCESS: "registered user success",
+    REGISTERED_USER_ERROR: "registered user error",
 };
 
 

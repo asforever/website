@@ -37,5 +37,17 @@ const deleteArticle = async (params) => {
     return await FetchUtil.fetch(options);
 };
 
+const getUser = async (params) => {
+    const options = {
+        url: WebURL.USER,
+        params: params,
+        method: "POST",
+    };
+    return await FetchUtil.fetch(options);
+};
 
-export default {createArticle, getArticles, getArticleCategory, deleteArticle};
+
+export default {
+    createArticle, getArticles, getArticleCategory, deleteArticle,
+    getUser
+};

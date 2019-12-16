@@ -13,6 +13,7 @@ const useStyles = createStyles((theme) => {
             display: `flex`,
             cursor: `pointer`,
             userSelect: `none`,
+            width: `100%`
         },
         hr: {
             border: `1px solid #ddd`,

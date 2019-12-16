@@ -81,4 +81,4 @@ class ArticleMgr {
 }
 
 const articleMgr = new ArticleMgr();
-export {articleMgr};
+export default articleMgr;

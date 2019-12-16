@@ -1,5 +1,6 @@
-import {articleMgr} from "../../../app/data/store/articleMgr";
+import storageMgr from "../../../app/data/store/storageMgr";
 
 export default {
-    articleMgr: articleMgr,
+    articleMgr: storageMgr.articleMgr,
+    userMgr: storageMgr.userMgr,
 }

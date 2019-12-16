@@ -5,7 +5,8 @@ import HelpPage from "../pages/HelpPage";
 import EditorPage from "../pages/EditorPage";
 import MainPage from "../pages/MainPage";
 import EmptyPage from "../pages/EmptyPage";
-import LoginPage from "../pages/LoginPage";
+import SignInPage from "../pages/SignInPage";
+import SignUpPage from "../pages/SignUpPage";
 
 export default {
     root: {
@@ -18,11 +19,17 @@ export default {
         path: "/editor",
         component: EditorPage,
     },
-    login: {
-        name: "login",
-        path: "/login",
-        component: LoginPage,
+    signin: {
+        name: "登陆",
+        path: "/signin",
+        component: SignInPage,
     },
+    signup: {
+        name: "注册",
+        path: "/signup",
+        component: SignUpPage,
+    },
+
     home: {
         name: "home",
         path: "/home",

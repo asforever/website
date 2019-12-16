@@ -1,4 +1,4 @@
-import {storageMgr} from "./store/storageMgr";
+import storageMgr from "./store/storageMgr";
 
 class AppContext {
     constructor() {
