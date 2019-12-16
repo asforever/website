@@ -4,16 +4,18 @@ import LogoBar from "../container/LogoBar";
 import HeadBar from "../container/HeadBar";
 import ContentBar from "../container/ContentBar";
 import {withRouter} from "react-router-dom";
-import Provider from "react-redux/es/components/Provider";
-import ThemeProvider from "../lib/yong-ui/components/ThemeProvider";
+import UserBar from "../container/UserBar";
 
 
 function MainPage(props) {
-    return <MainBG>
-        <LogoBar/>
-        <HeadBar/>
-        <ContentBar {...props}/>
-    </MainBG>
+    return <>
+        <UserBar/>
+        <MainBG>
+            <LogoBar/>
+            <HeadBar/>
+            <ContentBar {...props}/>
+        </MainBG>
+    </>
 }
 
 export default withRouter(MainPage);

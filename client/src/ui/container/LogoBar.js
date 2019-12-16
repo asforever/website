@@ -4,7 +4,7 @@ import Typography from "../lib/yong-ui/components/Typography";
 
 const useStyles = createStyles((theme) => ({
     logoContainer: {
-        margin: `1.5em 0em 2.5em 0em`,
+        margin: `1.5em 0em 4.5em 0em`,
     }
 }));
 

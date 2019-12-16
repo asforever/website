@@ -5,16 +5,23 @@ import HelpPage from "../pages/HelpPage";
 import EditorPage from "../pages/EditorPage";
 import MainPage from "../pages/MainPage";
 import EmptyPage from "../pages/EmptyPage";
+import LoginPage from "../pages/LoginPage";
 
 export default {
     root: {
         name: "root",
-        redirect: "/editor",
+        path: "/",
+        redirect: "/home",
     },
     editor: {
         name: "editor",
         path: "/editor",
         component: EditorPage,
+    },
+    login: {
+        name: "login",
+        path: "/login",
+        component: LoginPage,
     },
     home: {
         name: "home",

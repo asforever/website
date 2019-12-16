@@ -68,11 +68,19 @@ export default function FormDialog(props) {
 
     return (isOpen ? <Container className={classes.bg}>
         <div className={classes.container}>
-            <div ref={ref} className={classes.lists}>
+            <form ref={ref} className={classes.lists}>
                 {lists.map((list, key) => {
-                    return <input key={list} className={classes.list} placeholder={list} defaultValue={data[key]}/>
+                    const placeholder = list.value || list;
+                    const type = list.type || "text";
+
+                    return <input key={placeholder}
+                                  type={type}
+                                  autoComplete="true"
+                                  className={classes.list}
+                                  placeholder={placeholder}
+                                  defaultValue={data[key]}/>
                 })}
-            </div>
+            </form>
             <div className={classes.bottom}>
                 <button onClick={_onSubmit}>{submitText}</button>
                 <button onClick={_onCancel}>{closeText}</button>

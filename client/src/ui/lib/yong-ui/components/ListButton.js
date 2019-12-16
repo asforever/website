@@ -4,13 +4,13 @@ import {createStyles} from "../util";
 import clsx from "clsx";
 
 let useStyles = createStyles((theme) => ({
-    linkButton: {
+    listButton: {
         display: `flex`,
         userSelect: `none`,
-        color: `#757374`,
+        color: `#ebe8e9`,
         cursor: `pointer`,
         '&:hover': {
-            textDecorationLine: `underline`
+            backgroundColor: `#aaaaaaaa`
         },
     },
 }));
