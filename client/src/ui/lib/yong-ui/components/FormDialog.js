@@ -47,6 +47,7 @@ export default function FormDialog(props) {
         onSubmit
         , onCancel
         , lists
+        , data = []
         , submitText
         , closeText
         , isOpen = false,
@@ -68,8 +69,8 @@ export default function FormDialog(props) {
     return (isOpen ? <Container className={classes.bg}>
         <div className={classes.container}>
             <div ref={ref} className={classes.lists}>
-                {lists.map(list => {
-                    return <input key={list} className={classes.list} placeholder={list}/>
+                {lists.map((list, key) => {
+                    return <input key={list} className={classes.list} placeholder={list} defaultValue={data[key]}/>
                 })}
             </div>
             <div className={classes.bottom}>

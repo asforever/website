@@ -15,6 +15,7 @@ const useStyles = createStyles(theme => ({
         height: `fit-content`,
         minHeight: `4em`,
         overflow: `hidden`,
+        whiteSpace: `pre-wrap`
     },
     head: {
         display: `flex`,
@@ -42,7 +43,10 @@ function ArticleList(props) {
         setShowDetail(!showDetail);
     };
     const toEdit = () => {
-        history.push("/editor")
+        history.push({
+            "pathname": '/editor',
+            article: article
+        })
     };
     const delArticle = () => {
         dispatch(DeleteArticleRequest({category, title}));

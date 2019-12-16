@@ -8,51 +8,53 @@ import IconButton from "./IconButton";
 
 let useStyles = createStyles((theme) => ({
     container: {
-        padding: `3em`,
-        height: `fit-content`,
-        backgroundColor: `#e0e3ff`
+        position: `fixed`,
+        width: `calc(100vw - 2em)`,
+        height: `100vh`,
+        padding: `1em`,
+        backgroundColor: `#20242a`,
     },
     context: {
-        width: `100%`,
-        height: `100%`,
-        boxShadow: `1px 16px 20px 0px #05050585`
+        width: `calc(100vw - 4em)`,
+        height: `calc(100vh - 3em)`,
+        padding: `0.25em 1em 0.75em 1em`,
+        backgroundColor: `#f6f6f6`,
     },
     header: {
         display: `flex`,
-        width: `calc(100% - 0.25em)`,
+        width: `calc(100vw - 6em)`,
         height: `1.5em`,
-        padding: `0.25em 0 0 0.27em`,
-        borderRadius: `3px 3px 0 0`,
-        backgroundImage: `linear-gradient(#cccccc 2%, #9b9b9b 80%,#5c5c5c 90% 100%)`,
+        margin: `0 auto`
     },
     body: {
-        width: `100%`,
-        height: `calc(100vh - 7.5em)`,
-        backgroundColor: `#f6f6f6`,
+        width: `calc(100vw - 4em)`,
+        height: `calc(100vh - 5em)`,
         display: `flex`,
-        wordBreak: `break-all`
+        wordBreak: `break-all`,
+        boxShadow: `0px 14px 20px 0px #00000030`,
     },
     left: {
-        width: `50%`,
-        height: `calc(100vh - 11em)`,
+        width: `calc(50% - 4px)`,
         padding: `1em`,
         resize: `none`,
         border: 0,
-        borderRight: `1px solid #6f6f6f`,
+        marginRight: `4px`,
+        '& textarea': {
+            margin: `0`,
+        }
     },
     right: {
         whiteSpace: `pre-wrap`,
         width: `50%`,
         height: `100%`,
+        backgroundColor: `#ffffff`,
     },
 }));
 
 function MarkdownEditor(props) {
     const classes = useStyles();
-
-    const [text, setText] = useState("**h1**");
-    const {onSave} = props;
-
+    const {onSave,defaultValue="**h1**"} = props;
+    const [text, setText] = useState(defaultValue);
     const handleChange = (evt) => {
         setText(evt.target.value);
     };

@@ -52,9 +52,11 @@ class ArticleMgr {
 
     async deleteArticles(params) {
         let result = await WebResource.deleteArticle(params);
+        let {title, category} = params;
+        let children = this.articleTree.children;
+
         if (!result.error) {
-            let {title, category} = params;
-            let children = this.articleTree.children;
+
             let child = this.articleTree.children[category];
 
             if (child) {
@@ -65,11 +67,11 @@ class ArticleMgr {
                     delete children[category];
                 }
                 if (articles && !Object.keys(articles).length) {
-                    delete children[title];
+                    delete children[category];
                 }
             }
         }
-        return result;
+        return children[category] || {};
     }
 
     createArticleCategory(category) {

@@ -54,6 +54,7 @@ function* DeleteArticleSaga() {
     while (true) {
         const action = yield take(FetchActionType.DELETE_ARTICLE_REQUEST);
         const result = yield call(articleMgr.deleteArticles.bind(articleMgr), action.params);
+        console.log(result)
         if (result.error) {
             yield put(DeleteArticleError());
         } else {

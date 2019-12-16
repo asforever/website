@@ -1,19 +1,17 @@
 import React, {useState} from "react";
-import {createStyles} from "../lib/yong-ui/util";
-import ReactMarkdown from "react-markdown";
 import {connect} from "react-redux";
-import LinkButton from "../lib/yong-ui/components/LinkButton";
+import {withRouter} from "react-router-dom";
 import FormDialog from "../lib/yong-ui/components/FormDialog";
-import {SaveIcon} from "../lib/yong-ui/icons/SaveIcon";
-import IconButton from "../lib/yong-ui/components/IconButton";
 import {SaveArticleRequest} from "../store/action";
 import MarkdownEditor from "../lib/yong-ui/components/MarkdownEditor";
 
 
 function EditorPage(props) {
-    const dispatch = props.dispatch;
+    const {dispatch, location} = props;
+    const article = location.article || {};
+
     const [openSave, setOpenSave] = useState(false);
-    const [text, setText] = useState("false");
+    const [text, setText] = useState(article.content);
 
 
     const handleCancel = (evt) => {
@@ -36,14 +34,15 @@ function EditorPage(props) {
 
 
     return (<>
-        <MarkdownEditor onSave={popupDialog}/>
+        <MarkdownEditor defaultValue={text} onSave={popupDialog}/>
         <FormDialog isOpen={openSave}
                     onCancel={handleCancel}
                     onSubmit={handleSave}
                     lists={["目录", "分类", "摘要"]}
+                    data={[article.title, article.category, article.summary]}
                     closeText="关闭"
                     submitText="保存"/>
     </>)
 }
 
-export default connect()(EditorPage);
+export default connect()(withRouter(EditorPage));
