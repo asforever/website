@@ -7,7 +7,7 @@ let useStyles = createStyles((theme) => ({
     listButton: {
         display: `flex`,
         userSelect: `none`,
-        color: `#ebe8e9`,
+        color: `#9a9899`,
         cursor: `pointer`,
         '&:hover': {
             backgroundColor: `#aaaaaaaa`

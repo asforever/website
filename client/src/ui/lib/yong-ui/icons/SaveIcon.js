@@ -3,5 +3,5 @@ import {BaseIcon} from "./BaseIcon";
 
 const SaveIcon = BaseIcon(SaveSvg);
 
-export {SaveIcon}
+export default SaveIcon;
 

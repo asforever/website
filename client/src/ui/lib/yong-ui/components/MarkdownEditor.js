@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import clsx from "clsx";
 import ReactMarkdown from "react-markdown";
 import {createStyles} from "../util";
-import {SaveIcon} from "../icons/SaveIcon";
+import SaveIcon from "../icons/SaveIcon";
 import IconButton from "./IconButton";
 
 let useStyles = createStyles((theme) => ({
@@ -36,6 +36,7 @@ let useStyles = createStyles((theme) => ({
     left: {
         width: `calc(50% - 4px)`,
         padding: `1em`,
+        outline: `none`,
         resize: `none`,
         border: 0,
         marginRight: `4px`,
@@ -53,7 +54,7 @@ let useStyles = createStyles((theme) => ({
 
 function MarkdownEditor(props) {
     const classes = useStyles();
-    const {onSave,defaultValue="**h1**"} = props;
+    const {onSave, defaultValue = "**h1**"} = props;
     const [text, setText] = useState(defaultValue);
     const handleChange = (evt) => {
         setText(evt.target.value);

@@ -16,7 +16,7 @@ function SignUpPage(props) {
         <FormDialog isOpen={true}
                     onCancel={handleCancel}
                     onSubmit={handleSubmit}
-                    lists={["账号", {value: "请输入密码", type: "password"}, {value: "重复输入密码", type: "password"}]}
+                    lists={["账号", {placeholder: "请输入密码", type: "password"}, {placeholder: "重复输入密码", type: "password"}]}
                     closeText="登录"
                     submitText="注册"/>)
 }

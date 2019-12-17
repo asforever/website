@@ -3,7 +3,11 @@ import {createStyles} from "../lib/yong-ui/util";
 import PropTypes from "prop-types";
 import RouteBar from "./RouteBar";
 import router from "../router/router";
-import LinkButton from "../lib/yong-ui/components/LinkButton";
+import {connect} from "react-redux";
+import CloseIcon from "../lib/yong-ui/icons/CloseIcon";
+import IconButton from "../lib/yong-ui/components/IconButton";
+import SignOutIcon from "../lib/yong-ui/icons/SignOutIcon";
+import UserIcon from "../lib/yong-ui/icons/UserIcon";
 
 const useStyles = createStyles((theme) => ({
     headContainer: {
@@ -12,19 +16,34 @@ const useStyles = createStyles((theme) => ({
         borderTop: `1px Dashed #ccc`,
         display: `flex`,
         justifyContent: `space-between`,
-
     },
+    rightContainer: {
+        display: `flex`,
+        alignItems: `center`,
+    },
+    rightList: {
+        marginRight: `1em`,
+    }
 }));
 
 function HeadBar(props) {
     const classes = useStyles();
     const routerArr = Object.values(router.home.children);
-    const routerUser = [router.signin,router.signup];
+    const user = props.user;
+
+    let routerUser = [router.signin, router.signup];
+    const signOut = () => {
+
+    };
 
     return (
         <div className={classes.headContainer}>
             <RouteBar routes={routerArr}/>
-            <RouteBar routes={routerUser}/>
+            {!user ? <div className={classes.rightContainer}>
+                    <UserIcon className={classes.rightList}/>
+                    <IconButton className={classes.rightList} onClick={signOut} icon={(<SignOutIcon/>)}/>
+                </div>
+                : <RouteBar routes={routerUser}/>}
         </div>
     )
 }
@@ -33,4 +52,10 @@ HeadBar.propTypes = {
     routes: PropTypes.array,
 };
 
-export default HeadBar;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        user: state.userReducer.curUser
+    }
+};
+
+export default connect(mapStateToProps)(HeadBar);

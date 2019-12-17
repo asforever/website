@@ -1,6 +1,7 @@
-import React from "react";
 import CloseSvg from "./svg/close.svg";
+import {BaseIcon} from "./BaseIcon";
 
-export function CloseIcon() {
-    return React.createElement(CloseSvg,{className});
-}
+const CloseIcon = BaseIcon(CloseSvg);
+
+export default CloseIcon;
+
