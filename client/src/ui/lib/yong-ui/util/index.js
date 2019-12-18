@@ -1,6 +1,7 @@
 import presetTheme from "../state/presetTheme"
 import stateManager from "../state/stateManager";
-import React from "react";
+import presetMsgEvent from "../state/presetMsgEvent"
+import Event from "../event/Event"
 
 function createStyles(callback) {
     const styles = callback(presetTheme);
@@ -10,4 +11,8 @@ function createStyles(callback) {
     }
 }
 
-export {createStyles};
+function pushMsg(msg) {
+    presetMsgEvent.dispatch(new Event({type: "change", body: msg}));
+}
+
+export {createStyles, pushMsg};
