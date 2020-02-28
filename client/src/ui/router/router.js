@@ -1,45 +1,27 @@
-import HomePage from "../pages/HomePage";
-import ArticlePage from "../pages/ArticlePage";
 import ExamplePage from "../pages/ExamplePage";
-import HelpPage from "../pages/HelpPage";
-import EditorPage from "../pages/EditorPage";
-import MainPage from "../pages/MainPage";
+import HomePage from "../pages/HomePage";
+import WebglViewPage from "../pages/WebglViewPage";
 
 export default {
     root: {
         name: "root",
         path: "/",
-        redirect: "/editor",
+        redirect: "/home/examples",
     },
-    editor: {
-        name: "editor",
-        path: "/editor",
-        component: EditorPage,
+    webglView: {
+        name: "webglView",
+        path: "/webglView/:id",
+        component: WebglViewPage,
     },
-    main: {
-        name: "main",
-        path: "/main",
-        component: MainPage,
+    home: {
+        name: "home",
+        path: "/home",
+        component: HomePage,
         children: {
-            home: {
-                name: "主页",
-                path: "/main/home",
-                component: HomePage,
-            },
-            articles: {
-                name: "文章",
-                path: "/main/articles",
-                component: ArticlePage,
-            },
             examples: {
-                name: "案例",
-                path: "/main/examples",
+                name: "Example",
+                path: "/home/examples",
                 component: ExamplePage,
-            },
-            help: {
-                name: "帮助",
-                path: "/main/help",
-                component: HelpPage,
             },
         }
     },

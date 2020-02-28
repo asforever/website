@@ -1,10 +1,12 @@
 html, body {
     margin: 0;
     padding: 0;
-    color: #eee;
     height: 100%;
-    overflow: hidden;
-    background-image: radial-gradient(circle, #9b9b9b 0%, #a29fa3 100%);
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+    font-size: 14px;
+    color: #24292e;
+    box-sizing: border-box;
+/*    background-image: url("./assets/bg.jpg");*/
 }
 
 ::-webkit-scrollbar {

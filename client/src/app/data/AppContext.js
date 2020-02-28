@@ -1,16 +1,10 @@
-import {storageMgr} from "./store/storageMgr";
+import exampleMgr from "./store/exampleMgr";
 
 class AppContext {
     constructor() {
-        this.storageMgr = storageMgr;
-        this.mediators = {};
-    }
-
-    registerMediator(mediator) {
-        mediator.events.forEach(event=>{
-            this.mediators[event.type] = mediator;
-        });
+        this.exampleMgr = exampleMgr;
     }
 }
+const appContext = new AppContext();
 
-export default AppContext;
+export default appContext;

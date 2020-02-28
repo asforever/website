@@ -1,2 +1,7 @@
 # website
-mongoose doc:https://mongoosejs.com/docs/documents.html
+
+cd client 
+
+npm start
+
+http://localhost:9001/

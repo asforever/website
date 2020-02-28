@@ -13,6 +13,7 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.0",
@@ -20,6 +21,7 @@
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.6.5",
     "babel-loader": "^8.0.6",
+    "babel-plugin-prismjs": "^2.0.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "csv-loader": "^3.0.2",
@@ -43,12 +45,11 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
-    "@material-ui/core": "^4.6.0",
-    "@material-ui/icons": "^4.5.1",
-    "@material-ui/lab": "^4.0.0-alpha.32",
+    "clsx": "^1.0.4",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.15",
     "notistack": "^0.9.6",
+    "prismjs": "^1.19.0",
     "react-jss": "^10.0.0",
     "react-markdown": "^4.2.2",
     "react-redux": "^7.1.1",

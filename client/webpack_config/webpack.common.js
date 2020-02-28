@@ -7,6 +7,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const contextPath = path.resolve(__dirname, "../src");
 const distPath = path.resolve(__dirname, "../dist");
 const htmlPath = path.resolve(contextPath, "index.html");
+const ico = path.resolve(contextPath, "favicon.ico");
 const PUBLIC_URL = process.env.PUBLIC_URL || '/';
 
 module.exports = {
@@ -31,7 +32,14 @@ module.exports = {
                     presets: ['@babel/preset-react', '@babel/preset-env'],
                     plugins: [
                         '@babel/plugin-proposal-class-properties',
-                        "@babel/plugin-transform-runtime"
+                        '@babel/plugin-proposal-export-default-from',
+                        "@babel/plugin-transform-runtime",
+                        ["prismjs", {
+                            "languages": ["javascript", "css", "markup"],
+                            "plugins": ["line-numbers"],
+                            "theme": "twilight",
+                            "css": true
+                        }]
                     ],
                     cacheDirectory: true,
                     cacheCompression: false,
@@ -48,7 +56,6 @@ module.exports = {
                     {
                         loader: 'css-loader', options: {
                             sourceMap: true,
-                            modules: true,
                         }
                     },
                     {
@@ -74,7 +81,7 @@ module.exports = {
                         options: {
                             svgo: {
                                 plugins: [
-                                    { removeTitle: false }
+                                    {removeTitle: false}
                                 ],
                                 floatPrecision: 2
                             }
@@ -107,7 +114,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: '管理输出',
             template: htmlPath,
-            inject: 'body'
+            inject: 'body',
+            favicon: ico,
         }),
         new webpack.DefinePlugin({
             'process.env.PUBLIC_URL': JSON.stringify(PUBLIC_URL)

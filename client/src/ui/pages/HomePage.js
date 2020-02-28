@@ -1,72 +1,33 @@
-import React from "react";
-import {Container} from "../lib/yong-ui/components/Container";
-import {createStyles} from "../lib/yong-ui/util";;
+import React from "react"
+import Header from "../../lib/yong-ui/components/nav/Header";
+import TopNav from "../../lib/yong-ui/components/nav/TopNav";
+import SliderInput from "../../lib/yong-ui/components/input/SliderInput";
 
-let useStyles = createStyles((theme) => ({
-    paper: {
-        minHeight: `100vh`,
-        width: `60vw`,
-        backgroundColor: "#e9e9e9",
-        minWidth: `20em`,
-    },
+import ContentBar from "../container/ContentBar";
+import {withRouter} from "react-router-dom";
+import router from "../router/router";
 
-    instance: {
-        display: `flex`,
-        color: '#eee',
-        marginTop: `1em`,
-        backgroundColor: `#cbcbcb`,
-    },
-    canvas: {
-        width: `35vw`,
-        height: `25vw`,
-        minHeight: `4em`,
-        backgroundColor: `#000`,
-    },
-    detail: {
-        overflow: `hidden`,
-        display: `flex`,
-        flexDirection: `column`,
-        color: '#0c0c0c',
-        margin: `0 auto`,
-        width: `100%`,
-    },
-    itemContainer: {
-        display: `flex`,
-        flexDirection: `column`,
-        minWidth: `40vw`,
-        maxHeight: `30em`,
-        overflow: `scroll`,
-    },
-    context: {},
-    item: {
-        padding: `1em`,
-        display: `flex`,
-        flexDirection: `column`,
-        height: `8vw`,
-        minHeight: `4em`,
-    },
-    categoryContainer: {
-        padding: 0,
-        width: `20em`,
-        overflow: `hidden`,
-        marginTop: `1.3em`,
-        height: `min-content`
-    },
-    categoryHeader: {
-        backgroundColor: `#444444`,
-        color: `#ffffff`,
-        padding: `0.5em`,
-    },
-    category: {
-        margin: `0.5em`,
-    },
-}));
 
 function HomePage(props) {
-    const classes = useStyles().classes;
-    return (<Container>
-        home
-    </Container>)
+    const lists = Object.values(router.home.children);
+    const {history, location} = props;
+
+    let listIndex = lists.findIndex((list => {
+        return list.path === location.pathname
+    }));
+    const handleClickHeader = (evt, list) => {
+        let path = list.path;
+        if (location.pathname === path) return;
+        history.push(path);
+    };
+
+    return <>
+        <div>
+            <Header/>
+            <TopNav defaultIndex={listIndex} lists={lists} onClick={handleClickHeader}/>
+            <ContentBar {...props}/>
+        </div>
+    </>
 }
 
-export default HomePage;
+export default withRouter(HomePage);

@@ -1,72 +1,92 @@
 import WebResource from "../../../resource/WebResource";
-import ResourceNode from "./ResourceNode";
+import userMgr from "./userMgr";
 
 class ArticleMgr {
     constructor() {
-        this.articleTree = new ResourceNode({id: `文章`, path: `/articles`});
-        this.curCategory = "";
+        this.articles = {};
+        this.categories = [];
+        this.hasAllArticle = false;
+        this.curCategory = "ALL";
     }
 
     async getArticleCategory() {
-        let category = this.articleTree.children;
-        if (!Object.keys(category).length) {
+        let categories = this.categories;
+        if (!categories.length) {
             let data = await WebResource.getArticleCategory();
             if (data.error) return data;
             data.forEach(category => {
-                this.createArticleCategory(category.category);
+                categories.push(category.category);
             });
-            category = this.articleTree.children;
         }
-        return category;
+        return categories;
     }
 
     async getArticles(category) {
-        let child = this.articleTree.getChild(category);
-        if (!child) return null;
+        this.curCategory = category ? category.toUpperCase() : "ALL";
 
-        let articles = child.data.articles;
-        if (!articles) {
+        let articles = this.articles;
+        let curArticles = articles[category];
+        let fetchAllArticles = !category && !this.hasAllArticle;
+        this.hasAllArticle = true;
+
+        if (!curArticles || fetchAllArticles) {
             let data = await WebResource.getArticles({category: category});
             if (data.error) return data;
-            articles = child.data.articles = data;//bug
+            data.forEach(article => {
+                if (!articles[article.category]) {
+                    articles[category] = curArticles = {};
+                }
+                curArticles[article.title] = article;
+            });
         }
-        this.curCategory = category;
-        return articles;
+        return curArticles;
     }
 
     async createArticle(params) {
+        if (!userMgr.user) return;
+
         let {title, category} = params;
-        let child = this.articleTree.getChild(category);
-        if (!child) child = this.createArticleCategory(category);
-        let articles = child.data.articles;
+        let {categories, articles} = this;
+
         let article = await WebResource.createArticle(params);
-        if (!articles) articles = this.createArticleCategory(category);
-        articles[title] = article;
+        if (!article.error) {
+            if (!articles[category]) {
+                articles[category] = {};
+                categories.push(category);
+            }
+            articles[category][title] = article;
+
+        }
         return article;
     }
 
     async deleteArticles(params) {
+        if (!userMgr.user) return;
+
         let {title, category} = params;
-        let children = this.articleTree.children;
-        let child = this.articleTree.children[category];
-        if (child) {
-            let articles = child.data.articles;
-            if (title) {
-                delete articles[title];
-            } else {
-                delete children[category];
+        let {articles, categories} = this;
+        let curArticles = articles[category];
+
+        let result = await WebResource.deleteArticle(params);
+        if (!result.error) {
+            if (curArticles) {
+                if (title) {
+                    delete curArticles[title];
+                } else {
+                    delete articles[category];
+                }
             }
-            if (!Object.keys(articles).length) delete articles[title];
-            await WebResource.deleteArticle(params);
+            if (curArticles && !Object.keys(curArticles).length) {
+                categories = categories.filter(v => {
+                    return v !== category;
+                });
+                delete articles[category];
+            }
         }
-
+        return articles;
     }
 
-    createArticleCategory(category) {
-        const node = new ResourceNode({id: category, articles: null});
-        return this.articleTree.addChild(node);
-    }
 }
 
 const articleMgr = new ArticleMgr();
-export {articleMgr};
+export default articleMgr;

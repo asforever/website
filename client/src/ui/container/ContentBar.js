@@ -1,40 +1,27 @@
 import React from "react";
-import {createStyles} from "../lib/yong-ui/util";
-import {RouteList} from "../lib/yong-ui/components/RouteList";
+import {createStyles} from "../../lib/yong-ui/util";
+import RouteList from "./RouteList";
 import router from "../router/router";
-import RightBar from "./RightBar";
-
 
 const useStyles = createStyles((theme) => ({
-    contentContainer: {
-        display: `flex`,
-        justifyContent: `space-between`,
+    container: {
         width: `100%`,
-        marginTop: `0.2em`,
-        borderTop: `1px dashed #ccc`,
+        marginTop: `3em`,
     },
-    leftContainer: {
-        padding: `1em`,
-        width: `60%`,
-    },
-    rightContainer: {
-        width: `15em`,
-        padding: `1em`,
-        height: `100vh`,
-        borderLeft: `1px dashed #ccc`,
+    contentContainer: {
+        margin: `0 auto`,
+        width: `50%`,
+        minWidth: `50em`,
     },
 }));
 
 function ContentBar(props) {
     const classes = useStyles();
-    const routerArr = Object.values(router.main.children);
+    const routerArr = Object.values(router.home.children);
     return (
-        <div className={classes.contentContainer}>
-            <div className={classes.leftContainer}>
+        <div className={classes.container}>
+            <div className={classes.contentContainer}>
                 <RouteList routeList={routerArr}/>
-            </div>
-            <div className={classes.rightContainer}>
-                <RightBar/>
             </div>
         </div>
     )

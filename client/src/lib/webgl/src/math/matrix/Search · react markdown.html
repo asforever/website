@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://github.com/adam-p/markdown-here/search?q=markdown&unscoped_q=markdown -->
+<html lang="en"><script type="text/javascript">
+    var spector;
+    var captureOnLoad = false;
+    var captureOffScreen = false;
+    window.__SPECTOR_Canvases = [];
+
+    (function() {
+        var __SPECTOR_Origin_EXTENSION_GetContext = HTMLCanvasElement.prototype.getContext;
+        HTMLCanvasElement.prototype.__SPECTOR_Origin_EXTENSION_GetContext = __SPECTOR_Origin_EXTENSION_GetContext;
+
+        if (OffscreenCanvas) {
+            var __SPECTOR_Origin_EXTENSION_OffscreenGetContext = OffscreenCanvas.prototype.getContext;
+            OffscreenCanvas.prototype.__SPECTOR_Origin_EXTENSION_OffscreenGetContext = __SPECTOR_Origin_EXTENSION_OffscreenGetContext;
+
+            OffscreenCanvas.prototype.getContext = function () {
+                var context = null;
+                if (!arguments.length) {
+                    return context;
+                }
+    
+                if (arguments.length === 1) {
+                    context = this.__SPECTOR_Origin_EXTENSION_OffscreenGetContext(arguments[0]);
+                    if (context === null) {
+                        return context;
+                    }
+                }
+                else if (arguments.length === 2) {
+                    context = this.__SPECTOR_Origin_EXTENSION_OffscreenGetContext(arguments[0], arguments[1]);
+                    if (context === null) {
+                        return context;
+                    }
+                }
+    
+                var contextNames = ["webgl", "experimental-webgl", "webgl2", "experimental-webgl2"];
+                if (contextNames.indexOf(arguments[0]) !== -1) {
+                    // context.canvas.setAttribute("__spector_context_type", arguments[0]);
+                    // Notify the page a canvas is available.
+                    var myEvent = new CustomEvent("SpectorWebGLCanvasAvailableEvent");
+                    document.dispatchEvent(myEvent);
+                    this.id = "Offscreen";
+                    window.__SPECTOR_Canvases.push(this);
+    
+                    if (captureOnLoad) {
+                        // Ensures canvas is in the dom to capture the one we are currently tracking.
+                        if (false) {
+                            spector.captureContext(context, 500, false);
+                            captureOnLoad = false;
+                        }
+                    }
+                }
+    
+                return context;
+            }
+        }
+
+        HTMLCanvasElement.prototype.getContext = function () {
+            var context = null;
+            if (!arguments.length) {
+                return context;
+            }
+
+            if (arguments.length === 1) {
+                context = this.__SPECTOR_Origin_EXTENSION_GetContext(arguments[0]);
+                if (context === null) {
+                    return context;
+                }
+            }
+            else if (arguments.length === 2) {
+                context = this.__SPECTOR_Origin_EXTENSION_GetContext(arguments[0], arguments[1]);
+                if (context === null) {
+                    return context;
+                }
+            }
+
+            var contextNames = ["webgl", "experimental-webgl", "webgl2", "experimental-webgl2"];
+            if (contextNames.indexOf(arguments[0]) !== -1) {
+                context.canvas.setAttribute("__spector_context_type", arguments[0]);
+                // Notify the page a canvas is available.
+                var myEvent = new CustomEvent("SpectorWebGLCanvasAvailableEvent");
+                document.dispatchEvent(myEvent);
+
+                if (captureOffScreen) {
+                    var found = false;
+                    for (var i = 0; i < window.__SPECTOR_Canvases.length; i++) {
+                        if (window.__SPECTOR_Canvases[i] === this) {
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        window.__SPECTOR_Canvases.push(this);
+                    }
+                }
+
+                if (captureOnLoad) {
+                    // Ensures canvas is in the dom to capture the one we are currently tracking.
+                    if (this.parentElement || false) {
+                        spector.captureContext(context, 500, false);
+                        captureOnLoad = false;
+                    }
+                }
+            }
+
+            return context;
+        }
+    })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+  <link rel="dns-prefetch" href="https://github.githubassets.com/">
+  <link rel="dns-prefetch" href="https://avatars0.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars1.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars2.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://avatars3.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com/">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+
+
+
+  <link crossorigin="anonymous" media="all" integrity="sha512-YBhzjURrLT0ouaG+HHemxsJ+87lEDYGlXkaH7QjOkpaCqqorVOCwE6qJ8Wek2bhORLngfoUoqivhcDxi1XBAtw==" rel="stylesheet" href="Search%20·%20react%20markdown_files/frameworks-6018738d446b2d3d28b9a1be1c77a6c6.css">
+  
+    <link crossorigin="anonymous" media="all" integrity="sha512-RnGhTERbt9kdjVfGibbdmSyLXfE3Ku2VS0tDzizUR27QoExXpTYtxEgvZdKPFMN3ljfIdMTjO2SagX10CMGwUA==" rel="stylesheet" href="Search%20·%20react%20markdown_files/github-4671a14c445bb7d91d8d57c689b6dd99.css">
+    
+    
+    
+    
+
+
+  <meta name="viewport" content="width=device-width">
+  
+  <title>Search · markdown</title>
+    <meta name="description" content="Google Chrome, Firefox, and Thunderbird extension that lets you write email in Markdown and render it before sending. - adam-p/markdown-here">
+    <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+  <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+  <meta property="fb:app_id" content="1401488693436528">
+
+    <meta name="twitter:image:src" content="https://avatars3.githubusercontent.com/u/425687?s=400&amp;v=4"><meta name="twitter:site" content="@github"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="adam-p/markdown-here"><meta name="twitter:description" content="Google Chrome, Firefox, and Thunderbird extension that lets you write email in Markdown and render it before sending. - adam-p/markdown-here">
+    <meta property="og:image" content="https://avatars3.githubusercontent.com/u/425687?s=400&amp;v=4"><meta property="og:site_name" content="GitHub"><meta property="og:type" content="object"><meta property="og:title" content="adam-p/markdown-here"><meta property="og:url" content="https://github.com/adam-p/markdown-here"><meta property="og:description" content="Google Chrome, Firefox, and Thunderbird extension that lets you write email in Markdown and render it before sending. - adam-p/markdown-here">
+
+  <link rel="assets" href="https://github.githubassets.com/">
+  <link rel="web-socket" href="wss://live.github.com/_sockets/VjI6NDgxNTQ1MTg5OmQwYjFmNTE4NWY4YjBlYzU3OGI3YzIxYTMyYzVlNWQzZWIxZTk2YzViZGM4OWE1YjY1MWU5ODdlZjVlZGE4ODA=--43080f5f424ee335fbfb87e692a8ac0eab1c7a40">
+  <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+
+    <meta name="request-id" content="4D6C:628A:68156:90F20:5E228381" data-pjax-transient="">
+
+
+
+  
+
+  <meta name="selected-link" value="code_search" data-pjax-transient="">
+
+      <meta name="google-site-verification" content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
+    <meta name="google-site-verification" content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
+    <meta name="google-site-verification" content="GXs5KoUUkNCoaAZn7wPN-t01Pywp9M3sEjnt_3_ZWPc">
+
+    <meta name="octolytics-host" content="collector.githubapp.com"><meta name="octolytics-app-id" content="github"><meta name="octolytics-event-url" content="https://collector.githubapp.com/github-external/browser_event"><meta name="octolytics-dimension-request_id" content="4D6C:628A:68156:90F20:5E228381"><meta name="octolytics-dimension-region_edge" content="ap-southeast-1"><meta name="octolytics-dimension-region_render" content="iad"><meta name="octolytics-dimension-ga_id" content="1543658123.1551853316" class="js-octo-ga-id"><meta name="octolytics-dimension-visitor_id" content="9043797716299114244"><meta name="octolytics-actor-id" content="14084452"><meta name="octolytics-actor-login" content="asforever"><meta name="octolytics-actor-hash" content="bf4a18abc2fc49a9b66f9c476b5b9db7bb2de24301947f70d2e3a596a2f93451">
+
+<meta name="analytics-location-query-strip" content="true" data-pjax-transient="true"><meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;/repository_search/index" data-pjax-transient="true">
+
+
+
+    <meta name="google-analytics" content="UA-3769691-2">
+
+  <meta class="js-ga-set" name="userId" content="8538ce5b88ab303199cd70f4f17441df">
+
+<meta class="js-ga-set" name="dimension1" content="Logged In">
+
+
+
+  
+
+      <meta name="hostname" content="github.com">
+    <meta name="user-login" content="asforever">
+
+      <meta name="expected-hostname" content="github.com">
+
+      <meta name="js-proxy-site-detection-payload" content="YzgxMGMwZTE1Y2Y4MDBjODk4NjBjZWUzYWZlMGE3MWE0OTdkMmI2M2Y5MjAxNDk5YTk5ZWRlMmFmOTc3M2RjYXx7InJlbW90ZV9hZGRyZXNzIjoiMTgwLjE2Ny4xNDguMTA2IiwicmVxdWVzdF9pZCI6IjRENkM6NjI4QTo2ODE1Njo5MEYyMDo1RTIyODM4MSIsInRpbWVzdGFtcCI6MTU3OTMyMDE5NiwiaG9zdCI6ImdpdGh1Yi5jb20ifQ==">
+
+    <meta name="enabled-features" content="MARKETPLACE_FEATURED_BLOG_POSTS,MARKETPLACE_INVOICED_BILLING,MARKETPLACE_SOCIAL_PROOF_CUSTOMERS,MARKETPLACE_TRENDING_SOCIAL_PROOF,MARKETPLACE_RECOMMENDATIONS,MARKETPLACE_PENDING_INSTALLATIONS,NOTIFY_ON_BLOCK,RELATED_ISSUES,GHE_CLOUD_TRIAL">
+
+    <meta name="html-safe-nonce" content="3f7bc88290491e3321f331e917ef287649beae2c">
+
+  <meta http-equiv="x-pjax-version" content="75f4d75a4f1807e12030dec4deb3e1cb">
+  
+
+      <meta name="analytics-param-rename" content="q:ga-q" data-pjax-transient="">
+  <link href="https://github.com/adam-p/markdown-here/commits/master.atom" rel="alternate" title="Recent Commits to markdown-here:master" type="application/atom+xml">
+
+  <meta name="go-import" content="github.com/adam-p/markdown-here git https://github.com/adam-p/markdown-here.git">
+
+  <meta name="octolytics-dimension-user_id" content="425687"><meta name="octolytics-dimension-user_login" content="adam-p"><meta name="octolytics-dimension-repository_id" content="4311796"><meta name="octolytics-dimension-repository_nwo" content="adam-p/markdown-here"><meta name="octolytics-dimension-repository_public" content="true"><meta name="octolytics-dimension-repository_is_fork" content="false"><meta name="octolytics-dimension-repository_network_root_id" content="4311796"><meta name="octolytics-dimension-repository_network_root_nwo" content="adam-p/markdown-here"><meta name="octolytics-dimension-repository_explore_github_marketplace_ci_cta_shown" content="false">
+
+
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+  <link rel="icon" type="image/x-icon" class="js-site-favicon" href="https://github.githubassets.com/favicon.ico">
+
+<meta name="theme-color" content="#1e2327">
+
+
+  <link rel="manifest" href="https://github.com/manifest.json" crossorigin="use-credentials">
+
+  </head>
+
+  <body class="logged-in env-production page-responsive">
+    
+
+  <div class="position-relative js-header-wrapper ">
+    <a href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown#start-of-content" tabindex="1" class="p-3 bg-blue text-white show-on-focus js-skip-to-content">Skip to content</a>
+    <span class="Progress progress-pjax-loader position-fixed width-full js-pjax-loader-bar">
+      <span class="progress-pjax-loader-bar top-0 left-0" style="width: 0%;"></span>
+    </span>
+
+    
+    
+    
+
+
+          <header class="Header js-details-container Details flex-wrap flex-lg-nowrap p-responsive" role="banner">
+
+    <div class="Header-item d-none d-lg-flex">
+      <a class="Header-link" href="https://github.com/" data-hotkey="g d" aria-label="Homepage" data-ga-click="Header, go to dashboard, icon:logo">
+  <svg class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+
+    </div>
+
+    <div class="Header-item d-lg-none">
+      <button class="Header-link btn-link js-details-target" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <svg height="24" class="octicon octicon-three-bars" viewBox="0 0 12 16" version="1.1" width="18" aria-hidden="true"><path fill-rule="evenodd" d="M11.41 9H.59C0 9 0 8.59 0 8c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zm0-4H.59C0 5 0 4.59 0 4c0-.59 0-1 .59-1H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1h.01zM.59 11H11.4c.59 0 .59.41.59 1 0 .59 0 1-.59 1H.59C0 13 0 12.59 0 12c0-.59 0-1 .59-1z"></path></svg>
+      </button>
+    </div>
+
+    <div class="Header-item Header-item--full flex-column flex-lg-row width-full flex-order-2 flex-lg-order-none mr-0 mr-lg-3 mt-3 mt-lg-0 Details-content--hidden">
+        <div class="header-search flex-self-stretch flex-lg-self-auto mr-0 mr-lg-3 mb-3 mb-lg-0 scoped-search site-scoped-search js-site-search position-relative js-jump-to" role="combobox" aria-owns="jump-to-results" aria-label="Search or jump to" aria-haspopup="listbox" aria-expanded="false">
+  <div class="position-relative">
+    <!-- '"` --><!-- </textarea></xmp> --><form class="js-site-search-form" role="search" aria-label="Site" data-scope-type="Repository" data-scope-id="4311796" data-scoped-search-url="/adam-p/markdown-here/search" data-unscoped-search-url="/search" action="https://github.com/adam-p/markdown-here/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+      <label class="form-control input-sm header-search-wrapper p-0 header-search-wrapper-jump-to position-relative d-flex flex-justify-between flex-items-center js-chromeless-input-container">
+        <input type="text" class="form-control input-sm header-search-input jump-to-field js-jump-to-field js-site-search-focus js-site-search-field" data-hotkey="s,/" name="q" value="markdown" placeholder="Search or jump to…" data-unscoped-placeholder="Search or jump to…" data-scoped-placeholder="Search or jump to…" autocapitalize="off" aria-autocomplete="list" aria-controls="jump-to-results" aria-label="Search or jump to…" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations#csrf-token=4hJZGG1ulxRH+UWDGWYYlGSjSWhMLLDZxWn46MnCDG3ZDE4PsI8MwOmOUGYK9yp0ODCg7jYJvgIm5XuLROiWWQ==" spellcheck="false" autocomplete="off">
+          <input type="hidden" class="js-site-search-type-field" name="type">
+            <img src="Search%20·%20react%20markdown_files/search-key-slash.svg" alt="" class="mr-2 header-search-key-slash">
+
+            <div class="Box position-absolute overflow-hidden d-none jump-to-suggestions js-jump-to-suggestions-container">
+              
+<ul class="d-none js-jump-to-suggestions-template-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-suggestion" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"></path></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+</ul>
+
+<ul class="d-none js-jump-to-no-results-template-container">
+  <li class="d-flex flex-justify-center flex-items-center f5 d-none js-jump-to-suggestion p-2">
+    <span class="text-gray">No suggested jump to results</span>
+  </li>
+</ul>
+
+<ul id="jump-to-results" role="listbox" class="p-0 m-0 js-navigation-container jump-to-suggestions-results-container js-jump-to-suggestions-results-container">
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-scoped-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"></path></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+  
+
+<li class="d-flex flex-justify-start flex-items-center p-0 f5 navigation-item js-navigation-item js-jump-to-global-search d-none" role="option">
+  <a tabindex="-1" class="no-underline d-flex flex-auto flex-items-center jump-to-suggestions-path js-jump-to-suggestion-path js-navigation-open p-2" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown">
+    <div class="jump-to-octicon js-jump-to-octicon flex-shrink-0 mr-2 text-center d-none">
+      <svg height="16" width="16" class="octicon octicon-repo flex-shrink-0 js-jump-to-octicon-repo d-none" title="Repository" aria-label="Repository" viewBox="0 0 12 16" version="1.1" role="img"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+      <svg height="16" width="16" class="octicon octicon-project flex-shrink-0 js-jump-to-octicon-project d-none" title="Project" aria-label="Project" viewBox="0 0 15 16" version="1.1" role="img"><path fill-rule="evenodd" d="M10 12h3V2h-3v10zm-4-2h3V2H6v8zm-4 4h3V2H2v12zm-1 1h13V1H1v14zM14 0H1a1 1 0 00-1 1v14a1 1 0 001 1h13a1 1 0 001-1V1a1 1 0 00-1-1z"></path></svg>
+      <svg height="16" width="16" class="octicon octicon-search flex-shrink-0 js-jump-to-octicon-search d-none" title="Search" aria-label="Search" viewBox="0 0 16 16" version="1.1" role="img"><path fill-rule="evenodd" d="M15.7 13.3l-3.81-3.83A5.93 5.93 0 0013 6c0-3.31-2.69-6-6-6S1 2.69 1 6s2.69 6 6 6c1.3 0 2.48-.41 3.47-1.11l3.83 3.81c.19.2.45.3.7.3.25 0 .52-.09.7-.3a.996.996 0 000-1.41v.01zM7 10.7c-2.59 0-4.7-2.11-4.7-4.7 0-2.59 2.11-4.7 4.7-4.7 2.59 0 4.7 2.11 4.7 4.7 0 2.59-2.11 4.7-4.7 4.7z"></path></svg>
+    </div>
+
+    <img class="avatar mr-2 flex-shrink-0 js-jump-to-suggestion-avatar d-none" alt="" aria-label="Team" src="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown" width="28" height="28">
+
+    <div class="jump-to-suggestion-name js-jump-to-suggestion-name flex-auto overflow-hidden text-left no-wrap css-truncate css-truncate-target">
+    </div>
+
+    <div class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none js-jump-to-badge-search">
+      <span class="js-jump-to-badge-search-text-default d-none" aria-label="in this repository">
+        In this repository
+      </span>
+      <span class="js-jump-to-badge-search-text-global d-none" aria-label="in all of GitHub">
+        All GitHub
+      </span>
+      <span aria-hidden="true" class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+
+    <div aria-hidden="true" class="border rounded-1 flex-shrink-0 bg-gray px-1 text-gray-light ml-1 f6 d-none d-on-nav-focus js-jump-to-badge-jump">
+      Jump to
+      <span class="d-inline-block ml-1 v-align-middle">↵</span>
+    </div>
+  </a>
+</li>
+
+
+    <li class="d-flex flex-justify-center flex-items-center p-0 f5 js-jump-to-suggestion">
+      <img src="https://github.githubassets.com/images/spinners/octocat-spinner-128.gif" alt="Octocat Spinner Icon" class="m-2" width="28">
+    </li>
+</ul>
+
+            </div>
+      </label>
+</form>  </div>
+</div>
+
+
+      <nav class="d-flex flex-column flex-lg-row flex-self-stretch flex-lg-self-auto" aria-label="Global">
+    <a class="Header-link d-block d-lg-none py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-ga-click="Header, click, Nav menu - item:dashboard:user" aria-label="Dashboard" href="https://github.com/dashboard">
+      Dashboard
+</a>
+  <a class="js-selected-navigation-item Header-link  mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-hotkey="g p" data-ga-click="Header, click, Nav menu - item:pulls context:user" aria-label="Pull requests you created" data-selected-links="/pulls /pulls/assigned /pulls/mentioned /pulls" href="https://github.com/pulls">
+    Pull requests
+</a>
+  <a class="js-selected-navigation-item Header-link  mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-hotkey="g i" data-ga-click="Header, click, Nav menu - item:issues context:user" aria-label="Issues you created" data-selected-links="/issues /issues/assigned /issues/mentioned /issues" href="https://github.com/issues">
+    Issues
+</a>
+    <div class="mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15">
+      <a class="js-selected-navigation-item Header-link" data-ga-click="Header, click, Nav menu - item:marketplace context:user" data-octo-click="marketplace_click" data-octo-dimensions="location:nav_bar" data-selected-links=" /marketplace" href="https://github.com/marketplace">
+        Marketplace
+</a>      
+
+    </div>
+
+  <a class="js-selected-navigation-item Header-link  mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" data-ga-click="Header, click, Nav menu - item:explore" data-selected-links="/explore /trending /trending/developers /integrations /integrations/feature/code /integrations/feature/collaborate /integrations/feature/ship showcases showcases_search showcases_landing /explore" href="https://github.com/explore">
+    Explore
+</a>
+
+
+    <a class="Header-link d-block d-lg-none mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15" href="https://github.com/asforever">
+      <img class="avatar" height="20" width="20" alt="@asforever" src="https://avatars2.githubusercontent.com/u/14084452?s=60&amp;v=4">
+      asforever
+</a>
+    <!-- '"` --><!-- </textarea></xmp> --><form action="https://github.com/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="2cGySAbdIXM1P+KDHtB4Cl8BXbOM5C5OM0B9Ck7qQIdeA3BFFfC5uZ2xQC3J3zWHCO0W4Lv3PLwHkWLCb7ZjTA==">
+      <button type="submit" class="Header-link mr-0 mr-lg-3 py-2 py-lg-0 border-top border-lg-top-0 border-white-fade-15 d-lg-none btn-link d-block width-full text-left" data-ga-click="Header, sign out, icon:logout" style="padding-left: 2px;">
+        <svg class="octicon octicon-sign-out v-align-middle" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9V7H8V5h4V3l4 3-4 3zm-2 3H6V3L2 1h8v3h1V1c0-.55-.45-1-1-1H1C.45 0 0 .45 0 1v11.38c0 .39.22.73.55.91L6 16.01V13h4c.55 0 1-.45 1-1V8h-1v4z"></path></svg>
+        Sign out
+      </button>
+</form></nav>
+
+    </div>
+
+    <div class="Header-item Header-item--full flex-justify-center d-lg-none position-relative">
+      <div class="css-truncate css-truncate-target width-fit position-absolute left-0 right-0 text-center">
+              <svg class="octicon octicon-repo" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M4 9H3V8h1v1zm0-3H3v1h1V6zm0-2H3v1h1V4zm0-2H3v1h1V2zm8-1v12c0 .55-.45 1-1 1H6v2l-1.5-1.5L3 16v-2H1c-.55 0-1-.45-1-1V1c0-.55.45-1 1-1h10c.55 0 1 .45 1 1zm-1 10H1v2h2v-1h3v1h5v-2zm0-10H2v9h9V1z"></path></svg>
+    <a class="Header-link" href="https://github.com/adam-p">adam-p</a>
+    /
+    <a class="Header-link" href="https://github.com/adam-p/markdown-here">markdown-here</a>
+
+</div>
+    </div>
+
+
+    <div class="Header-item mr-0 mr-lg-3 flex-order-1 flex-lg-order-none">
+      
+
+    <a aria-label="You have no unread notifications" class="Header-link notification-indicator position-relative tooltipped tooltipped-sw js-socket-channel js-notification-indicator" data-hotkey="g n" data-ga-click="Header, go to notifications, icon:read" data-channel="notification-changed:14084452" href="https://github.com/notifications">
+        <span class="js-indicator-modifier mail-status "></span>
+        <svg class="octicon octicon-bell" viewBox="0 0 14 16" version="1.1" width="14" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M14 12v1H0v-1l.73-.58c.77-.77.81-2.55 1.19-4.42C2.69 3.23 6 2 6 2c0-.55.45-1 1-1s1 .45 1 1c0 0 3.39 1.23 4.16 5 .38 1.88.42 3.66 1.19 4.42l.66.58H14zm-7 4c1.11 0 2-.89 2-2H5c0 1.11.89 2 2 2z"></path></svg>
+</a>
+    </div>
+
+
+    <div class="Header-item position-relative d-none d-lg-flex">
+      <details class="details-overlay details-reset">
+  <summary class="Header-link" aria-label="Create new…" data-ga-click="Header, create new, icon:add" aria-haspopup="menu" role="button">
+    <svg class="octicon octicon-plus" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"></path></svg> <span class="dropdown-caret"></span>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw" role="menu">
+    
+<a role="menuitem" class="dropdown-item" href="https://github.com/new" data-ga-click="Header, create new repository">
+  New repository
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="https://github.com/new/import" data-ga-click="Header, import a repository">
+    Import repository
+  </a>
+
+<a role="menuitem" class="dropdown-item" href="https://gist.github.com/" data-ga-click="Header, create new gist">
+  New gist
+</a>
+
+  <a role="menuitem" class="dropdown-item" href="https://github.com/organizations/new" data-ga-click="Header, create new organization">
+    New organization
+  </a>
+
+
+  <div role="none" class="dropdown-divider"></div>
+  <div class="dropdown-header">
+    <span title="adam-p/markdown-here">This repository</span>
+  </div>
+    <a role="menuitem" class="dropdown-item" href="https://github.com/adam-p/markdown-here/issues/new" data-ga-click="Header, create new issue" data-skip-pjax="">
+      New issue
+    </a>
+
+
+  </details-menu>
+</details>
+
+    </div>
+
+    <div class="Header-item position-relative mr-0 d-none d-lg-flex">
+      
+  <details class="details-overlay details-reset js-feature-preview-indicator-container" data-feature-preview-indicator-src="/users/asforever/feature_preview/indicator_check.json">
+
+  <summary class="Header-link" aria-label="View profile and more" data-ga-click="Header, show menu, icon:avatar" aria-haspopup="menu" role="button">
+    <img alt="@asforever" class="avatar" src="https://avatars1.githubusercontent.com/u/14084452?s=40&amp;v=4" height="20" width="20">
+      <span class="feature-preview-indicator js-feature-preview-indicator" hidden=""></span>
+    <span class="dropdown-caret"></span>
+  </summary>
+  <details-menu class="dropdown-menu dropdown-menu-sw mt-2" style="width: 180px" role="menu">
+    <div class="header-nav-current-user css-truncate"><a role="menuitem" class="no-underline user-profile-link px-3 pt-2 pb-2 mb-n2 mt-n1 d-block" href="https://github.com/asforever" data-ga-click="Header, go to profile, text:Signed in as">Signed in as <strong class="css-truncate-target">asforever</strong></a></div>
+    <div role="none" class="dropdown-divider"></div>
+
+      <div class="pl-3 pr-3 f6 user-status-container js-user-status-context pb-1" data-url="/users/status?compact=1&amp;link_mentions=0&amp;truncate=1">
+        
+<div class="js-user-status-container
+    user-status-compact rounded-1 px-2 py-1 mt-2
+    border
+  " data-team-hovercards-enabled="">
+  <details class="js-user-status-details details-reset details-overlay details-overlay-dark">
+    <summary class="btn-link btn-block link-gray no-underline js-toggle-user-status-edit toggle-user-status-edit " role="menuitem" data-hydro-click="{&quot;event_type&quot;:&quot;user_profile.click&quot;,&quot;payload&quot;:{&quot;profile_user_id&quot;:425687,&quot;target&quot;:&quot;EDIT_USER_STATUS&quot;,&quot;user_id&quot;:14084452,&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;}}" data-hydro-click-hmac="cb9e07b5966c3f70ef3df30640712b059aa9d3c635906e543a2ab10e406819f2">
+      <div class="d-flex">
+        <div class="f6 lh-condensed user-status-header
+          d-inline-block v-align-middle
+            user-status-emoji-only-header circle
+            pr-2
+" style="max-width: 29px">
+          <div class="user-status-emoji-container flex-shrink-0 mr-1 mt-1 lh-condensed-ultra v-align-bottom" style="">
+            <svg class="octicon octicon-smiley" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 01-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 01-1.45-2.17A6.59 6.59 0 011.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 018 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z"></path></svg>
+          </div>
+        </div>
+        <div class="
+          d-inline-block v-align-middle
+          
+          
+           css-truncate css-truncate-target 
+           user-status-message-wrapper f6" style="line-height: 20px;">
+          <div class="d-inline-block text-gray-dark v-align-text-top text-left">
+              <span class="text-gray ml-2">Set status</span>
+          </div>
+        </div>
+      </div>
+    </summary>
+    <details-dialog class="details-dialog rounded-1 anim-fade-in fast Box Box--overlay" role="dialog" tabindex="-1" aria-modal="true">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="position-relative flex-auto js-user-status-form" action="https://github.com/users/status?compact=1&amp;link_mentions=0&amp;truncate=1" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put"><input type="hidden" name="authenticity_token" value="tvwHzfyhtB7FXUbMxqZLziQ/FxqD56AzJSisWR8gXqTUUxYzquh3czaeg8r/e+GZoMkCtl0rF+VS3x4QyWHT1Q==">
+        <div class="Box-header bg-gray border-bottom p-3">
+          <button class="Box-btn-octicon js-toggle-user-status-edit btn-octicon float-right" type="reset" aria-label="Close dialog" data-close-dialog="">
+            <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
+          </button>
+          <h3 class="Box-title f5 text-bold text-gray-dark">Edit status</h3>
+        </div>
+        <input type="hidden" name="emoji" class="js-user-status-emoji-field" value="">
+        <input type="hidden" name="organization_id" class="js-user-status-org-id-field" value="">
+        <div class="px-3 py-2 text-gray-dark">
+          <div class="js-characters-remaining-container position-relative mt-2">
+            <div class="input-group d-table form-group my-0 js-user-status-form-group">
+              <span class="input-group-button d-table-cell v-align-middle" style="width: 1%">
+                <button type="button" aria-label="Choose an emoji" class="btn-outline btn js-toggle-user-status-emoji-picker btn-open-emoji-picker p-0">
+                  <span class="js-user-status-original-emoji" hidden=""></span>
+                  <span class="js-user-status-custom-emoji"></span>
+                  <span class="js-user-status-no-emoji-icon">
+                    <svg class="octicon octicon-smiley" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm4.81 12.81a6.72 6.72 0 01-2.17 1.45c-.83.36-1.72.53-2.64.53-.92 0-1.81-.17-2.64-.53-.81-.34-1.55-.83-2.17-1.45a6.773 6.773 0 01-1.45-2.17A6.59 6.59 0 011.21 8c0-.92.17-1.81.53-2.64.34-.81.83-1.55 1.45-2.17.62-.62 1.36-1.11 2.17-1.45A6.59 6.59 0 018 1.21c.92 0 1.81.17 2.64.53.81.34 1.55.83 2.17 1.45.62.62 1.11 1.36 1.45 2.17.36.83.53 1.72.53 2.64 0 .92-.17 1.81-.53 2.64-.34.81-.83 1.55-1.45 2.17zM4 6.8v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2H5.2C4.53 8 4 7.47 4 6.8zm5 0v-.59c0-.66.53-1.19 1.2-1.19h.59c.66 0 1.19.53 1.19 1.19v.59c0 .67-.53 1.2-1.19 1.2h-.59C9.53 8 9 7.47 9 6.8zm4 3.2c-.72 1.88-2.91 3-5 3s-4.28-1.13-5-3c-.14-.39.23-1 .66-1h8.59c.41 0 .89.61.75 1z"></path></svg>
+                  </span>
+                </button>
+              </span>
+              <text-expander keys=": @" data-mention-url="/autocomplete/user-suggestions" data-emoji-url="/autocomplete/emoji">
+                <input type="text" autocomplete="off" data-no-org-url="/autocomplete/user-suggestions" data-org-url="/suggestions?mention_suggester=1" data-maxlength="80" class="d-table-cell width-full form-control js-user-status-message-field js-characters-remaining-field" placeholder="What&#39;s happening?" name="message" value="" aria-label="What is your current status?">
+              </text-expander>
+              <div class="error">Could not update your status, please try again.</div>
+            </div>
+            <div style="margin-left: 53px" class="my-1 text-small label-characters-remaining js-characters-remaining" data-suffix="remaining" hidden="">
+              80 remaining
+            </div>
+          </div>
+          <include-fragment class="js-user-status-emoji-picker" data-url="/users/status/emoji"></include-fragment>
+          <div class="overflow-auto ml-n3 mr-n3 px-3 border-bottom" style="max-height: 33vh">
+            <div class="user-status-suggestions js-user-status-suggestions collapsed overflow-hidden">
+              <h4 class="f6 text-normal my-3">Suggestions:</h4>
+              <div class="mx-3 mt-2 clearfix">
+                  <div class="float-left col-6">
+                      <button type="button" value=":palm_tree:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="palm_tree" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f334.png">🌴</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          On vacation
+                        </div>
+                      </button>
+                      <button type="button" value=":face_with_thermometer:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="face_with_thermometer" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f912.png">🤒</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          Out sick
+                        </div>
+                      </button>
+                  </div>
+                  <div class="float-left col-6">
+                      <button type="button" value=":house:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="house" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3e0.png">🏠</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          Working from home
+                        </div>
+                      </button>
+                      <button type="button" value=":dart:" class="d-flex flex-items-baseline flex-items-stretch lh-condensed f6 btn-link link-gray no-underline js-predefined-user-status mb-1">
+                        <div class="emoji-status-width mr-2 v-align-middle js-predefined-user-status-emoji">
+                          <g-emoji alias="dart" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f3af.png">🎯</g-emoji>
+                        </div>
+                        <div class="d-flex flex-items-center no-underline js-predefined-user-status-message ws-normal text-left" style="border-left: 1px solid transparent">
+                          Focusing
+                        </div>
+                      </button>
+                  </div>
+              </div>
+            </div>
+            <div class="user-status-limited-availability-container">
+              <div class="form-checkbox my-0">
+                <input type="checkbox" name="limited_availability" value="1" class="js-user-status-limited-availability-checkbox" data-default-message="I may be slow to respond." aria-describedby="limited-availability-help-text-truncate-true-compact-true" id="limited-availability-truncate-true-compact-true">
+                <label class="d-block f5 text-gray-dark mb-1" for="limited-availability-truncate-true-compact-true">
+                  Busy
+                </label>
+                <p class="note" id="limited-availability-help-text-truncate-true-compact-true">
+                  When others mention you, assign you, or request your review,
+                  GitHub will let them know that you have limited availability.
+                </p>
+              </div>
+            </div>
+          </div>
+            
+
+<div class="d-inline-block f5 mr-2 pt-3 pb-2">
+  <div class="d-inline-block mr-1">
+    Clear status
+  </div>
+
+  <details class="js-user-status-expire-drop-down f6 dropdown details-reset details-overlay d-inline-block mr-2">
+    <summary class="f5 btn-link link-gray-dark border px-2 py-1 rounded-1" aria-haspopup="true">
+      <div class="js-user-status-expiration-interval-selected d-inline-block v-align-baseline">
+        Never
+      </div>
+      <div class="dropdown-caret"></div>
+    </summary>
+
+    <ul class="dropdown-menu dropdown-menu-se pl-0 overflow-auto" style="width: 220px; max-height: 15.5em">
+      <li>
+        <button type="button" class="btn-link dropdown-item js-user-status-expire-button ws-normal" title="Never">
+          <span class="d-inline-block text-bold mb-1">Never</span>
+          <div class="f6 lh-condensed">Keep this status until you clear your status or edit your status.</div>
+        </button>
+      </li>
+      <li class="dropdown-divider" role="none"></li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 30 minutes" value="2020-01-18T12:33:16+08:00">
+            in 30 minutes
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 1 hour" value="2020-01-18T13:03:16+08:00">
+            in 1 hour
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="in 4 hours" value="2020-01-18T16:03:16+08:00">
+            in 4 hours
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="today" value="2020-01-18T23:59:59+08:00">
+            today
+          </button>
+        </li>
+        <li>
+          <button type="button" class="btn-link dropdown-item ws-normal js-user-status-expire-button" title="this week" value="2020-01-19T23:59:59+08:00">
+            this week
+          </button>
+        </li>
+    </ul>
+  </details>
+  <input class="js-user-status-expiration-date-input" type="hidden" name="expires_at" value="">
+</div>
+
+          <include-fragment class="js-user-status-org-picker" data-url="/users/status/organizations"></include-fragment>
+        </div>
+        <div class="d-flex flex-items-center flex-justify-between p-3 border-top">
+          <button type="submit" disabled="" class="width-full btn btn-primary mr-2 js-user-status-submit">
+            Set status
+          </button>
+          <button type="button" disabled="" class="width-full js-clear-user-status-button btn ml-2 ">
+            Clear status
+          </button>
+        </div>
+</form>    </details-dialog>
+  </details>
+</div>
+
+      </div>
+      <div role="none" class="dropdown-divider"></div>
+
+
+    <a role="menuitem" class="dropdown-item" href="https://github.com/asforever" data-ga-click="Header, go to profile, text:your profile">Your profile</a>
+
+    <a role="menuitem" class="dropdown-item" href="https://github.com/asforever?tab=repositories" data-ga-click="Header, go to repositories, text:your repositories">Your repositories</a>
+
+    <a role="menuitem" class="dropdown-item" href="https://github.com/asforever?tab=projects" data-ga-click="Header, go to projects, text:your projects">Your projects</a>
+
+    <a role="menuitem" class="dropdown-item" href="https://github.com/asforever?tab=stars" data-ga-click="Header, go to starred repos, text:your stars">Your stars</a>
+      <a role="menuitem" class="dropdown-item" href="https://gist.github.com/mine" data-ga-click="Header, your gists, text:your gists">Your gists</a>
+
+
+
+
+
+    <div role="none" class="dropdown-divider"></div>
+      
+<div id="feature-enrollment-toggle" class="hide-sm hide-md feature-preview-details position-relative">
+  <button type="button" class="dropdown-item btn-link" role="menuitem" data-feature-preview-trigger-url="/users/asforever/feature_previews" data-feature-preview-close-details="{&quot;event_type&quot;:&quot;feature_preview.clicks.close_modal&quot;,&quot;payload&quot;:{&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-feature-preview-close-hmac="74f0d5e5cf67aaa4c4a2c3ec016e92fc3b72a39bfc59f3c6e8f3d53d9b84588b" data-hydro-click="{&quot;event_type&quot;:&quot;feature_preview.clicks.open_modal&quot;,&quot;payload&quot;:{&quot;link_location&quot;:&quot;user_dropdown&quot;,&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="942a99248b03ef9f3868c01e63755d01110bf5be4cb5df7e6fdb04e15710d04c">
+    Feature preview
+  </button>
+    <span class="feature-preview-indicator js-feature-preview-indicator" hidden=""></span>
+</div>
+
+    <a role="menuitem" class="dropdown-item" href="https://help.github.com/" data-ga-click="Header, go to help, text:help">Help</a>
+    <a role="menuitem" class="dropdown-item" href="https://github.com/settings/profile" data-ga-click="Header, go to settings, icon:settings">Settings</a>
+    <!-- '"` --><!-- </textarea></xmp> --><form class="logout-form" action="https://github.com/logout" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="PdCLGuNY8RQZijoJuOfe5N4AJC0r5QQziI+YAh/p1He6EkkX8HVp3rEEmKdv6JNpiexvfhz2FsG8XofKPrX3vA==">
+      
+      <button type="submit" class="dropdown-item dropdown-signout" data-ga-click="Header, sign out, icon:logout" role="menuitem">
+        Sign out
+      </button>
+      <input type="text" name="required_field_c739" hidden="hidden" class="form-control">
+<input type="hidden" name="timestamp" value="1579320196575" class="form-control">
+<input type="hidden" name="timestamp_secret" value="b48740c1b038581c2574445f3f70f14a3ff71ac19c76c99c26bdfc6bc4a3dec7" class="form-control">
+
+</form>  </details-menu>
+</details>
+
+    </div>
+
+  </header>
+
+      
+
+  </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+    <div id="js-flash-container">
+
+</div>
+
+
+
+  <div class="application-main " data-commit-hovercards-enabled="">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container" data-pjax-container="">
+      
+
+
+    
+
+
+
+
+
+
+
+
+
+<div class="container-lg clearfix new-discussion-timeline experiment-repo-nav  p-0">
+  <div class="repository-content ">
+
+    
+    
+      <div class="container-lg px-md-2 mt-lg-4 clearfix">
+
+    <div class="col-12 px-2 py-2 py-md-3 d-lg-none d-flex">
+      <div class="d-flex flex-auto">
+        <!-- '"` --><!-- </textarea></xmp> --><form class="js-site-search-form flex-auto" action="https://github.com/adam-p/markdown-here/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="✓">
+          <input aria-label="Search GitHub" autocapitalize="off" autocomplete="off" autofocus="" class="form-control input-block" name="q" placeholder="Search GitHub" spellcheck="false" type="text" value="markdown">
+          <input type="hidden" class="js-site-search-type-field" name="type">
+        </form></div>
+        <button class="btn ml-2 d-none d-md-block" type="submit">Search</button>
+    </div>
+
+    <div class="col-12 col-md-3 float-left px-md-2">
+      <nav class="menu border d-none d-md-block" data-pjax="">
+          <a class="menu-item selected" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Code">Code<span class="ml-1 mt-1 js-codesearch-count Counter Counter--gray" data-search-type="Code">135</span></a>
+          <a class="menu-item" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Commits">Commits<span class="ml-1 mt-1 js-codesearch-count Counter Counter--gray" data-search-type="Commits">51</span></a>
+          <a class="menu-item" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Issues">Issues<span class="ml-1 mt-1 js-codesearch-count Counter Counter--gray" data-search-type="Issues">384</span></a>
+          <a class="menu-item" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=RegistryPackages">Packages<span class="ml-1 mt-1 js-codesearch-count Counter" data-search-type="RegistryPackages">0</span></a>
+          <a class="menu-item" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Wikis">Wikis<span class="ml-1 mt-1 js-codesearch-count Counter Counter--gray" data-search-type="Wikis">8</span></a>
+      </nav>
+
+      <nav class="UnderlineNav UnderlineNav--full d-md-none mb-2 border-top" data-pjax="">
+        <div class="UnderlineNav-container">
+          <div class="UnderlineNav-body js-codesearch-nav overflow-auto">
+              <a class="UnderlineNav-item flex-shrink-0 selected" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Code">Code<span class="ml-1 mt-1 js-codesearch-count Counter Counter--gray" data-search-type="Code">135</span></a>
+              <a class="UnderlineNav-item flex-shrink-0" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Commits">Commits<span class="ml-1 mt-1 Counter Counter--gray" data-search-type="Commits">51</span></a>
+              <a class="UnderlineNav-item flex-shrink-0" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Issues">Issues<span class="ml-1 mt-1 Counter Counter--gray" data-search-type="Issues">384</span></a>
+              <a class="UnderlineNav-item flex-shrink-0" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=RegistryPackages">Packages<span class="ml-1 mt-1 Counter" data-search-type="RegistryPackages">0</span></a>
+                <a class="UnderlineNav-item flex-shrink-0" href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;type=Wikis">Wikis<span class="ml-1 mt-1 Counter Counter--gray" data-search-type="Wikis">8</span></a>
+          </div>
+        </div>
+      </nav>
+
+        <div class="border rounded-1 p-3 mb-3 d-none d-md-block">
+    <h2 class="d-inline-block f5 mb-2">
+      Languages
+    </h2>
+
+    <ul class="filter-list small" data-pjax="">
+        <li>
+            <span class="bar" style="width: 32%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=Text&amp;q=markdown">
+              <span class="count">38</span>
+              Text
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 19%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=JavaScript&amp;q=markdown">
+              <span class="count">23</span>
+              JavaScript
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 13%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=JSON&amp;q=markdown">
+              <span class="count">15</span>
+              JSON
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 11%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=INI&amp;q=markdown">
+              <span class="count">13</span>
+              INI
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 8%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=Markdown&amp;q=markdown">
+              <span class="count">9</span>
+              Markdown
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 7%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=CSS&amp;q=markdown">
+              <span class="count">8</span>
+              CSS
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 6%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=HTML&amp;q=markdown">
+              <span class="count">7</span>
+              HTML
+</a>        </li>
+        <li>
+            <span class="bar" style="width: 6%;"></span>
+
+            <a class="filter-item" href="https://github.com/adam-p/markdown-here/search?l=XML&amp;q=markdown">
+              <span class="count">7</span>
+              XML
+</a>        </li>
+    </ul>
+  </div>
+
+  <!-- Gist search is not responsive so explicitly check the page variable -->
+    <div class="px-2 pt-2 d-flex d-md-none flex-items-center">
+      <label for="codesearch_select_language" class="col-3 text-small px-2">Language</label>
+      <select id="codesearch_select_language" class="col-9 form-select mr-2" data-pjax="">
+        <option value="/adam-p/markdown-here/search?q=markdown" selected="">Any</option>
+          <option value="/adam-p/markdown-here/search?l=Text&amp;q=markdown">Text</option>
+          <option value="/adam-p/markdown-here/search?l=JavaScript&amp;q=markdown">JavaScript</option>
+          <option value="/adam-p/markdown-here/search?l=JSON&amp;q=markdown">JSON</option>
+          <option value="/adam-p/markdown-here/search?l=INI&amp;q=markdown">INI</option>
+          <option value="/adam-p/markdown-here/search?l=Markdown&amp;q=markdown">Markdown</option>
+          <option value="/adam-p/markdown-here/search?l=CSS&amp;q=markdown">CSS</option>
+          <option value="/adam-p/markdown-here/search?l=HTML&amp;q=markdown">HTML</option>
+          <option value="/adam-p/markdown-here/search?l=XML&amp;q=markdown">XML</option>
+      </select>
+    </div>
+
+
+<!-- Put sort options in filter area on small screens  -->
+  <div class="px-2 pt-2 d-flex d-md-none flex-items-center">
+    <label for="codesearch_sort_code" class="col-3 text-small px-2">Sort</label>
+    <select id="codesearch_sort_code" class="col-9 form-select mr-2" data-pjax="">
+          <option value="/adam-p/markdown-here/search?o=desc&amp;q=markdown&amp;s=" selected="">Best match</option>
+          <option value="/adam-p/markdown-here/search?o=desc&amp;q=markdown&amp;s=indexed">Recently indexed</option>
+          <option value="/adam-p/markdown-here/search?o=asc&amp;q=markdown&amp;s=indexed">Least recently indexed</option>
+    </select>
+  </div>
+
+
+      <div class="mt-3 d-none d-md-block">
+        <a href="https://github.com/search/advanced?q=markdown&amp;r=adam-p%2Fmarkdown-here&amp;type=Code" class="f6">Advanced search</a>
+        <details class="details-reset details-overlay details-overlay-dark d-inline-block">
+          <summary class="btn-link f6 ml-3" role="button">Cheat sheet</summary>
+          <details-dialog class="anim-fade-in fast Box Box--overlay Box-overlay--wide d-flex flex-column" role="dialog" aria-modal="true">
+  <div class="Box-header">
+    <button class="Box-btn-octicon btn-octicon float-right" type="button" aria-label="Close dialog" data-close-dialog="">
+      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
+    </button>
+    <h3 class="Box-title">Search cheat sheet</h3>
+  </div>
+
+  <div class="Box-body overflow-auto markdown-body">
+    <p>GitHub’s search supports a variety of different operations. Here’s a quick cheat sheet for some of the common searches.</p>
+    <p>For more information, visit our <a href="https://help.github.com/articles/about-searching-on-github/">search help section</a>.</p>
+
+    <h2>Basic search</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>This search</th>
+          <th>Finds repositories with…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>cat stars:&gt;100</td>
+          <td>Find cat repositories with greater than 100 stars.</td>
+        </tr>
+        <tr>
+          <td>user:defunkt</td>
+          <td>Get all repositories from the user defunkt.</td>
+        </tr>
+        <tr>
+          <td>tom location:"San Francisco, CA"</td>
+          <td>Find all tom users in "San Francisco, CA".</td>
+        </tr>
+        <tr>
+          <td>join extension:coffee</td>
+          <td>Find all instances of join in code with coffee extension.</td>
+        </tr>
+        <tr>
+          <td>NOT cat</td>
+          <td>Excludes all results containing cat.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Repository search
+      <a href="https://help.github.com/articles/searching-repositories"><svg aria-label="Help" class="octicon octicon-link-external" viewBox="0 0 12 16" version="1.1" width="12" height="16" role="img"><path fill-rule="evenodd" d="M11 10h1v3c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h3v1H1v10h10v-3zM6 2l2.25 2.25L5 7.5 6.5 9l3.25-3.25L12 8V2H6z"></path></svg></a>
+    </h2>
+    <p>Repository search looks through the projects you have access to on GitHub. You can also filter the results:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>This search</th>
+          <th>Finds repositories with…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>cat stars:&gt;100</td>
+          <td>Find cat repositories with greater than 100 stars.</td>
+        </tr>
+        <tr>
+          <td>user:defunkt</td>
+          <td>Get all repositories from the user defunkt.</td>
+        </tr>
+        <tr>
+          <td>pugs pushed:&gt;2013-01-28</td>
+          <td>Pugs repositories pushed to since Jan 28, 2013.</td>
+        </tr>
+        <tr>
+          <td>node.js forks:&lt;200</td>
+          <td>Find all node.js repositories with less than 200 forks.</td>
+        </tr>
+        <tr>
+          <td>jquery size:1024..4089</td>
+          <td>Find jquery repositories between the sizes 1024 and 4089 kB.</td>
+        </tr>
+        <tr>
+          <td>gitx fork:true</td>
+          <td>Repository search includes forks of gitx.</td>
+        </tr>
+        <tr>
+          <td>gitx fork:only</td>
+          <td>Repository search returns only forks of gitx.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Code search
+      <a href="https://help.github.com/articles/searching-code"><svg aria-label="Help" class="octicon octicon-link-external" viewBox="0 0 12 16" version="1.1" width="12" height="16" role="img"><path fill-rule="evenodd" d="M11 10h1v3c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h3v1H1v10h10v-3zM6 2l2.25 2.25L5 7.5 6.5 9l3.25-3.25L12 8V2H6z"></path></svg></a>
+    </h2>
+    <p>Code search looks through the files hosted on GitHub. You can also filter the results:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>This search</th>
+          <th>Finds repositories with…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>install repo:charles/privaterepo</td>
+          <td>Find all instances of install in code from the repository charles/privaterepo.</td>
+        </tr>
+        <tr>
+          <td>shogun user:heroku</td>
+          <td>Find references to shogun from all public heroku repositories.</td>
+        </tr>
+        <tr>
+          <td>join extension:coffee</td>
+          <td>Find all instances of join in code with coffee extension.</td>
+        </tr>
+        <tr>
+          <td>system size:&gt;1000</td>
+          <td>Find all instances of system in code of file size greater than 1000kbs.</td>
+        </tr>
+        <tr>
+          <td>examples path:/docs/</td>
+          <td>Find all examples in the path /docs/.</td>
+        </tr>
+        <tr>
+          <td>replace fork:true</td>
+          <td>Search replace in the source code of forks.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Issue search
+      <a href="https://help.github.com/articles/searching-issues"><svg aria-label="Help" class="octicon octicon-link-external" viewBox="0 0 12 16" version="1.1" width="12" height="16" role="img"><path fill-rule="evenodd" d="M11 10h1v3c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h3v1H1v10h10v-3zM6 2l2.25 2.25L5 7.5 6.5 9l3.25-3.25L12 8V2H6z"></path></svg></a>
+    </h2>
+    <p>Issue search looks through issues and pull requests on GitHub. You can also filter the results:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>This search</th>
+          <th>Finds issues…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>encoding user:heroku</td>
+          <td>Encoding issues across the Heroku organization.</td>
+        </tr>
+        <tr>
+          <td>cat is:open</td>
+          <td>Find cat issues that are open.</td>
+        </tr>
+        <tr>
+          <td>strange comments:&gt;42</td>
+          <td>Issues with more than 42 comments.</td>
+        </tr>
+        <tr>
+          <td>hard label:bug</td>
+          <td>Hard issues labeled as a bug.</td>
+        </tr>
+        <tr>
+          <td>author:mojombo</td>
+          <td>All issues authored by mojombo.</td>
+        </tr>
+        <tr>
+          <td>mentions:tpope</td>
+          <td>All issues mentioning tpope.</td>
+        </tr>
+        <tr>
+          <td>assignee:rtomayko</td>
+          <td>All issues assigned to rtomayko.</td>
+        </tr>
+        <tr>
+          <td>exception created:&gt;2012-12-31</td>
+          <td>Created since the beginning of 2013.</td>
+        </tr>
+        <tr>
+          <td>exception updated:&lt;2013-01-01</td>
+          <td>Last updated before 2013.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+
+    <h2>User search
+      <a href="https://help.github.com/articles/searching-users"><svg aria-label="Help" class="octicon octicon-link-external" viewBox="0 0 12 16" version="1.1" width="12" height="16" role="img"><path fill-rule="evenodd" d="M11 10h1v3c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V3c0-.55.45-1 1-1h3v1H1v10h10v-3zM6 2l2.25 2.25L5 7.5 6.5 9l3.25-3.25L12 8V2H6z"></path></svg></a>
+    </h2>
+    <p>User search finds users with an account on GitHub. You can also filter the results:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>This search</th>
+          <th>Finds repositories with…</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>fullname:"Linus Torvalds"</td>
+          <td>Find users with the full name "Linus Torvalds".</td>
+        </tr>
+        <tr>
+          <td>tom location:"San Francisco, CA"</td>
+          <td>Find all tom users in "San Francisco, CA".</td>
+        </tr>
+        <tr>
+          <td>chris followers:100..200</td>
+          <td>Find all chris users with followers between 100 and 200.</td>
+        </tr>
+        <tr>
+          <td>ryan repos:&gt;10</td>
+          <td>Find all ryan users with more than 10 repositories.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</details-dialog>
+
+        </details>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-9 float-left px-2 pt-3 pt-md-0 codesearch-results">
+      <div class="px-2">
+
+
+        
+  <div class="d-flex flex-column flex-md-row flex-justify-between border-bottom pb-3 position-relative">
+    <h3>
+    135 code results
+
+    in <a href="https://github.com/adam-p/markdown-here">adam-p/markdown-here</a>
+
+    <small class="f4 text-normal no-wrap">
+      or view <a href="https://github.com/search?q=markdown">all results on GitHub</a>
+    </small>
+</h3>
+
+      <details class="d-none d-md-block mt-2 mt-sm-0 details-reset details-overlay select-menu">
+        <summary class="btn btn-sm select-menu-button" aria-haspopup="menu" role="button">
+          <i>Sort:</i>
+          <span data-menu-button="">Best match</span>
+        </summary>
+        <details-menu class="select-menu-modal position-absolute right-0" style="z-index: 99;" aria-label="Sort options" role="menu">
+          <div class="select-menu-header" tabindex="-1">
+            <span class="select-menu-title">Sort options</span>
+          </div>
+          <div class="select-menu-list">
+                <a class="select-menu-item" role="menuitemradio" aria-checked="true" data-pjax="true" data-pjax-preserve-scroll="true" href="https://github.com/adam-p/markdown-here/search?o=desc&amp;q=markdown&amp;s=">
+                  <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                  <span class="select-menu-item-text" data-menu-button-text="">Best match</span>
+</a>                <a class="select-menu-item" role="menuitemradio" aria-checked="false" data-pjax="true" data-pjax-preserve-scroll="true" href="https://github.com/adam-p/markdown-here/search?o=desc&amp;q=markdown&amp;s=indexed">
+                  <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                  <span class="select-menu-item-text" data-menu-button-text="">Recently indexed</span>
+</a>                <a class="select-menu-item" role="menuitemradio" aria-checked="false" data-pjax="true" data-pjax-preserve-scroll="true" href="https://github.com/adam-p/markdown-here/search?o=asc&amp;q=markdown&amp;s=indexed">
+                  <svg class="octicon octicon-check select-menu-item-icon" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
+                  <span class="select-menu-item-text" data-menu-button-text="">Least recently indexed</span>
+</a>          </div>
+        </details-menu>
+      </details>
+  </div>
+
+        
+  <div id="code_search_results">
+    <div class="code-list">
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/chrome.manifest" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:1,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/chrome.manifest&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="5d5faa42c7ea2fa95bc7ab874aa4e9550d8f087204ba62d99b88ec7ec9ca924b" href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/chrome.manifest">src/chrome.manifest</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/chrome.manifest#L1">1</a>
+    </td>
+    <td class="blob-code blob-code-inner">content   <span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>_here                 firefox/chrome/content/</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/chrome.manifest#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner">skin      <span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>_here   classic/1.0   firefox/chrome/skin/</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/chrome.manifest#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner">locale    <span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>_here   en            firefox/chrome/locale/en/</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/chrome.manifest#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner">locale    markdown_here   ja            firefox/chrome/locale/ja/
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+
+        <span class="match-count mr-3">
+          Showing the top three matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-06-26T09:04:38Z" class="no-wrap" title="2018年6月26日 GMT+8 下午5:04">on 26 Jun 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/firefox/chrome/skin/toolbar.css" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:2,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="28c0ed955d1956160d2340afe6b3258a1957cba00b11366869f8d2441a335153" href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css">src/firefox/chrome/skin/toolbar.css</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L1">1</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-c">/*</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-c"> * Page action (button in address bar)</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-c"> */</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner">
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-c">/* Note that `#pageAction-<span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>_here` is an `&lt;image&gt;`, so the `width` can be</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L6">6</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-c">   set directly. */</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L7">7</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-kos">#</span><span class="pl-c1">pageAction-<span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>_here</span> {</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/firefox/chrome/skin/toolbar.css#L8">8</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-c1">list-style-image</span>: <span class="pl-en">url</span>(<span class="pl-s">"resource://markdown_here_common/images/icon14-button-monochrome.png"</span>);
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #563d7c"></span>
+  <span itemprop="programmingLanguage">CSS</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top two matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-06-26T09:04:40Z" class="no-wrap" title="2018年6月26日 GMT+8 下午5:04">on 26 Jun 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/firefox/chrome/content/ff-overlay.js" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:3,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="271a929fa2c0aa31f062bceeb4fed869c944663e5406e3400a2e63936de37d2d" href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js">src/firefox/chrome/content/ff-overlay.js</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L15">15</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">var</span> <span class="pl-s1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>_here</span> <span class="pl-c1">=</span> <span class="pl-kos">{</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L16">16</a>
+    </td>
+    <td class="blob-code blob-code-inner">
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L17">17</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-c1">imports</span>: <span class="pl-kos">{</span><span class="pl-kos">}</span><span class="pl-kos">,</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L18">18</a>
+    </td>
+    <td class="blob-code blob-code-inner">
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L19">19</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-c">// Components.utils is somewhat more performant than mozIJSSubScriptLoader,</span>
+</td>
+  </tr>
+<tr class="divider">
+  <td class="blob-num">…</td>
+  <td class="blob-code"></td>
+</tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L21">21</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-c">// tons of headaches (see https://github.com/adam-p/<span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here/issues/141).</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/src/firefox/chrome/content/ff-overlay.js#L22">22</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-c">// The correct way to deal with that is probably to pass `window` into every</span>
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #f1e05a"></span>
+  <span itemprop="programmingLanguage">JavaScript</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top two matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-09-14T01:00:09Z" class="no-wrap" title="2018年9月14日 GMT+8 上午9:00">on 14 Sep 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/common/forgot-to-render-prompt.html" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:4,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="7752bb6e306f18c615d76b2b274dd25cd8d72c0373f613ae58eb6c783aa5f136" href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html">src/common/forgot-to-render-prompt.html</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner">    <span class="pl-c">/* CSS reset. Borrowed from Vimium: https://github.com/philc/vimium/blob/5bd32a511da813d731f73c4d646c14a69c2515ff/content_scripts/vimium.css */</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner">  .<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">div</span>.<span class="pl-c1">markdown-here-reset</span><span class="pl-kos">,</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">span</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html#L6">6</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">a</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/forgot-to-render-prompt.html#L7">7</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">a</span>:<span class="pl-c1">visited</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #e34c26"></span>
+  <span itemprop="programmingLanguage">HTML</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top four matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-06-26T09:04:38Z" class="no-wrap" title="2018年6月26日 GMT+8 下午5:04">on 26 Jun 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="README.md" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:5,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/README.md&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="41ac18411adc49e839090d59ecfa10b0f7272d627f426fb97973c10b254a545a" href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/README.md">README.md</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/README.md#L1">1</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-mh"><span class="pl-mh">#</span><span class="pl-mh"> </span>![<span class="pl-e"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> Here logo</span>](https://raw.github.com/adam-p/<span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here/master/src/common/images/icon48.png) Markdown Here</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/README.md#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner">
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/README.md#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner">[<span class="pl-e">**Visit the website.**</span>](http://<span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here.com)&lt;br&gt;</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/78febfcaefd922fd98e0910d75da8cb26494fdd8/README.md#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner">[<span class="pl-e">**Get it for Chrome.**</span>](https://chrome.google.com/webstore/detail/elifhakcjgalahccnjkneoccemfahfoa)&lt;br&gt;
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #ccc"></span>
+  <span itemprop="programmingLanguage">Markdown</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top three matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-09-14T01:00:09Z" class="no-wrap" title="2018年9月14日 GMT+8 上午9:00">on 14 Sep 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/firefox/chrome/locale/pl/strings.properties" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:6,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="5362bf69829d792175b09a11899814c77d598fc70c0eeb589d1fded1c1ab7834" href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties">src/firefox/chrome/locale/pl/strings.properties</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties#L1">1</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">app_name</span>=<span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> Here</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">app_slogan</span>=Napisz e-mail w języku <span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> a następnie go upiększ.</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">context_menu_item</span>=Przełącz <span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">currently_in_use</span>=Obecnie w użyciu
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/pl/strings.properties#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">cursor_into_compose</span>=Proszę umieść kursor w polu kompozycji.
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #ccc"></span>
+  <span itemprop="programmingLanguage">INI</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top three matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-09-30T13:17:50Z" class="no-wrap" title="2018年9月30日 GMT+8 下午9:17">on 30 Sep 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/common/upgrade-notification.html" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:7,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="f69fd0e2e5a89fad7af467e8ada43cd0ddf451356d118f4916f8518b6d7f9b8b" href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html">src/common/upgrade-notification.html</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner">    <span class="pl-c">/* CSS reset. Borrowed from Vimium: https://github.com/philc/vimium/blob/5bd32a511da813d731f73c4d646c14a69c2515ff/content_scripts/vimium.css */</span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner">  .<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">a</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">a</span>:<span class="pl-c1">visited</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html#L6">6</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">a</span>:<span class="pl-c1">hover</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span><span class="pl-kos">,</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/6bdab321d3b1415ff99d7dc9bba4f2ebf714bc7d/src/common/upgrade-notification.html#L7">7</a>
+    </td>
+    <td class="blob-code blob-code-inner">  <span class="pl-ent">a</span>:<span class="pl-c1">link</span>.<span class="pl-c1"><span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here-reset</span> {</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #e34c26"></span>
+  <span itemprop="programmingLanguage">HTML</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top five matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-06-26T09:04:39Z" class="no-wrap" title="2018年6月26日 GMT+8 下午5:04">on 26 Jun 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/firefox/chrome/locale/ru/strings.properties" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:8,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="dabc533c2675db1e1874920f2f1114d4117a6618eb003b493e7b8107a1f60a30" href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties">src/firefox/chrome/locale/ru/strings.properties</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties#L1">1</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">app_name</span>=<span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> Here</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">app_slogan</span>=Напишите ваш емейл в <span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> и сделайте его стильным.</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">context_menu_item</span>=Переключить <span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span></td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">currently_in_use</span>=Используемый в настоящее время 
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/ru/strings.properties#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">cursor_into_compose</span>=Пожалуйста, установите курсор в окно создания сообщения.
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #ccc"></span>
+  <span itemprop="programmingLanguage">INI</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top three matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-09-30T13:17:50Z" class="no-wrap" title="2018年9月30日 GMT+8 下午9:17">on 30 Sep 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/install.rdf" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:9,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="024fc1ae2c13f72116d234b69634cd12cc3ecf913a5212e617551ab5a2364a54" href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf">src/install.rdf</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner">    &lt;<span class="pl-ent">Description</span> <span class="pl-e">about</span>=<span class="pl-s"><span class="pl-pds">"</span>urn:mozilla:install-manifest<span class="pl-pds">"</span></span>&gt;
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L6">6</a>
+    </td>
+    <td class="blob-code blob-code-inner">        &lt;<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">type</span>&gt;2&lt;/<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">type</span>&gt; <span class="pl-c"><span class="pl-c">&lt;!--</span> 2 : Extension <span class="pl-c">--&gt;</span></span>
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L7">7</a>
+    </td>
+    <td class="blob-code blob-code-inner">        &lt;<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">id</span>&gt;<span class="text-bold bg-yellow-light rounded-1 d-inline-block">markdown</span>-here@adam.pritchard&lt;/<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">id</span>&gt;</td>
+  </tr>
+<tr class="divider">
+  <td class="blob-num">…</td>
+  <td class="blob-code"></td>
+</tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L42">42</a>
+    </td>
+    <td class="blob-code blob-code-inner">        &lt;<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">localized</span>&gt;
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L43">43</a>
+    </td>
+    <td class="blob-code blob-code-inner">          &lt;<span class="pl-ent">Description</span>&gt;
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L44">44</a>
+    </td>
+    <td class="blob-code blob-code-inner">            &lt;<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">locale</span>&gt;de&lt;/<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">locale</span>&gt;
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/install.rdf#L45">45</a>
+    </td>
+    <td class="blob-code blob-code-inner">            &lt;<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">name</span>&gt;<span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> Here&lt;/<span class="pl-ent">em</span><span class="pl-ent">:</span><span class="pl-ent">name</span>&gt;</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #ccc"></span>
+  <span itemprop="programmingLanguage">XML</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top two matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-09-30T13:17:50Z" class="no-wrap" title="2018年9月30日 GMT+8 下午9:17">on 30 Sep 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+          
+<div class="hx_hit-code code-list-item d-flex py-4 code-list-item-public repo-specific">
+
+  <div class="width-full">
+
+    <div class="f4 text-normal">
+      <a title="src/firefox/chrome/locale/tr/strings.properties" data-hydro-click="{&quot;event_type&quot;:&quot;search_result.click&quot;,&quot;payload&quot;:{&quot;page_number&quot;:1,&quot;per_page&quot;:10,&quot;query&quot;:&quot;markdown&quot;,&quot;result_position&quot;:10,&quot;click_id&quot;:4311796,&quot;result&quot;:{&quot;id&quot;:4311796,&quot;global_relay_id&quot;:&quot;MDEwOlJlcG9zaXRvcnk0MzExNzk2&quot;,&quot;model_name&quot;:&quot;Repository&quot;,&quot;url&quot;:&quot;https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties&quot;},&quot;client_id&quot;:&quot;2105673243.1551853316&quot;,&quot;originating_request_id&quot;:&quot;4D6C:628A:68156:90F20:5E228381&quot;,&quot;originating_url&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown&quot;,&quot;referrer&quot;:&quot;https://github.com/adam-p/markdown-here/search?q=react+markdown&amp;unscoped_q=react+markdown&quot;,&quot;user_id&quot;:14084452}}" data-hydro-click-hmac="d542675b7d7a9ead43b3db487959a131e5c6a1ca1072384ec0fe294b9227578c" href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties">src/firefox/chrome/locale/tr/strings.properties</a>
+    </div>
+
+      <div class="file-box blob-wrapper my-1">
+        <table class="highlight">
+            <tbody><tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties#L1">1</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">app_name</span>=<span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> Here</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties#L2">2</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">app_slogan</span>=<span class="text-bold bg-yellow-light rounded-1 d-inline-block">Markdown</span> ile email yaz, sonra da güzelleştir.</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties#L3">3</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">context_menu_item</span>=Markdown Toggle
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties#L4">4</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">currently_in_use</span>=Şuanda kullanımda
+</td>
+  </tr>
+  <tr>
+    <td class="blob-num">
+      <a href="https://github.com/adam-p/markdown-here/blob/1df5aee09cae90e2991db4e9cfb8c1b65a3c1898/src/firefox/chrome/locale/tr/strings.properties#L5">5</a>
+    </td>
+    <td class="blob-code blob-code-inner"><span class="pl-k">cursor_into_compose</span>=Lütfen kürsörünüzü metin alanına getirin.
+</td>
+  </tr>
+
+        </tbody></table>
+      </div>
+
+    <div class="d-flex flex-wrap text-small text-gray">
+         <div class="mr-3">
+           <span>
+  <span class="repo-language-color" style="background-color: #ccc"></span>
+  <span itemprop="programmingLanguage">INI</span>
+</span>
+
+         </div>
+
+        <span class="match-count mr-3">
+          Showing the top two matches
+        </span>
+
+      <span class="updated-at mr-3">
+        Last indexed <relative-time datetime="2018-09-30T13:17:50Z" class="no-wrap" title="2018年9月30日 GMT+8 下午9:17">on 30 Sep 2018</relative-time>
+      </span>
+    </div>
+
+  </div>
+</div>
+
+    </div>
+      <div class="paginate-container codesearch-pagination-container">
+    <div class="d-flex d-md-inline-block pagination" data-pjax="true"><span class="previous_page disabled">Previous</span> <em class="current" data-total-pages="14">1</em> <a rel="next" href="https://github.com/adam-p/markdown-here/search?p=2&amp;q=markdown&amp;unscoped_q=markdown">2</a> <a href="https://github.com/adam-p/markdown-here/search?p=3&amp;q=markdown&amp;unscoped_q=markdown">3</a> <a href="https://github.com/adam-p/markdown-here/search?p=4&amp;q=markdown&amp;unscoped_q=markdown">4</a> <a href="https://github.com/adam-p/markdown-here/search?p=5&amp;q=markdown&amp;unscoped_q=markdown">5</a> <span class="gap">…</span> <a href="https://github.com/adam-p/markdown-here/search?p=13&amp;q=markdown&amp;unscoped_q=markdown">13</a> <a href="https://github.com/adam-p/markdown-here/search?p=14&amp;q=markdown&amp;unscoped_q=markdown">14</a> <a class="next_page" rel="next" href="https://github.com/adam-p/markdown-here/search?p=2&amp;q=markdown&amp;unscoped_q=markdown">Next</a></div>
+  </div>
+
+  </div>
+
+      </div>
+    </div>
+
+    <div class="px-3 d-block d-sm-none">
+      <a href="https://github.com/search/advanced?q=markdown" class="f6">Advanced search</a>
+    </div>
+  </div>
+
+
+
+  </div>
+</div>
+
+    </main>
+  </div>
+  
+
+  </div>
+
+        
+<div class="footer container-lg width-full p-responsive" role="contentinfo">
+  <div class="position-relative d-flex flex-row-reverse flex-lg-row flex-wrap flex-lg-nowrap flex-justify-center flex-lg-justify-between pt-6 pb-2 mt-6 f6 text-gray border-top border-gray-light ">
+    <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+      <li class="mr-3 mr-lg-0">© 2020 GitHub, Inc.</li>
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to terms, text:terms" href="https://github.com/site/terms">Terms</a></li>
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to privacy, text:privacy" href="https://github.com/site/privacy">Privacy</a></li>
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to security, text:security" href="https://github.com/security">Security</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://githubstatus.com/" data-ga-click="Footer, go to status, text:status">Status</a></li>
+        <li><a data-ga-click="Footer, go to help, text:help" href="https://help.github.com/">Help</a></li>
+    </ul>
+
+    <a aria-label="Homepage" title="GitHub" class="footer-octicon d-none d-lg-block mx-lg-4" href="https://github.com/">
+      <svg height="24" class="octicon octicon-mark-github" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+</a>
+   <ul class="list-style-none d-flex flex-wrap col-12 col-lg-5 flex-justify-center flex-lg-justify-between mb-2 mb-lg-0">
+        <li class="mr-3 mr-lg-0"><a data-ga-click="Footer, go to contact, text:contact" href="https://github.com/contact">Contact GitHub</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://github.com/pricing" data-ga-click="Footer, go to Pricing, text:Pricing">Pricing</a></li>
+      <li class="mr-3 mr-lg-0"><a href="https://developer.github.com/" data-ga-click="Footer, go to api, text:api">API</a></li>
+      <li class="mr-3 mr-lg-0"><a href="https://training.github.com/" data-ga-click="Footer, go to training, text:training">Training</a></li>
+        <li class="mr-3 mr-lg-0"><a href="https://github.blog/" data-ga-click="Footer, go to blog, text:blog">Blog</a></li>
+        <li><a data-ga-click="Footer, go to about, text:about" href="https://github.com/about">About</a></li>
+
+    </ul>
+  </div>
+  <div class="d-flex flex-justify-center pb-6">
+    <span class="f6 text-gray-light"></span>
+  </div>
+</div>
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error">
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg class="octicon octicon-x" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M7.48 8l3.75 3.75-1.48 1.48L6 9.48l-3.75 3.75-1.48-1.48L4.52 8 .77 4.25l1.48-1.48L6 6.52l3.75-3.75 1.48 1.48L7.48 8z"></path></svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+
+    
+    <script crossorigin="anonymous" integrity="sha512-yUQVJlf6PdPtYetPr+JKEF64/1izvT1er3NK9Fs/+377lvW6/xA8CNRyJWRbghnICzO9pz593eAXT/D+a+Ec2w==" type="application/javascript" src="Search%20·%20react%20markdown_files/frameworks-c9441526.js.下载"></script>
+    
+    <script crossorigin="anonymous" async="async" integrity="sha512-bPuJ4LqZmtk18NvJpZ3W6VYixz3IzwKeZiGNXCMfDzuAnwXSmG8cZdW3r2pFynqWwqOmVts/1CBtBMxMETUXDQ==" type="application/javascript" src="Search%20·%20react%20markdown_files/github-bootstrap-6cfb89e0.js.下载"></script>
+    
+    
+    
+  <div class="js-stale-session-flash flash flash-warn flash-banner" hidden="">
+    <svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 000 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 00.01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg>
+    <span class="js-stale-session-flash-signed-in" hidden="">You signed in with another tab or window. <a href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown">Reload</a> to refresh your session.</span>
+    <span class="js-stale-session-flash-signed-out" hidden="">You signed out in another tab or window. <a href="https://github.com/adam-p/markdown-here/search?q=markdown&amp;unscoped_q=markdown">Reload</a> to refresh your session.</span>
+  </div>
+  <template id="site-details-dialog"></template>
+
+  <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;" tabindex="0">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box box-shadow-large" style="width:360px;">
+  </div>
+</div>
+
+  
+  <div class="js-notification-shelf-not-found-error" hidden=""></div>
+
+  <div aria-live="polite" class="js-global-screen-reader-notice sr-only"></div>
+
+  
+
+
+</body></html>
