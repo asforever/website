@@ -90,6 +90,17 @@ module.exports = {
                 ]
             },
             {
+                test: /\.(obj|gltf|drc|mtl|glb)$/i,
+                use: {
+                    loader: "file-loader",
+                    options: {
+                        outputPath: "models/",
+                        name: "[name].[ext]",
+                        esModule: false
+                    }
+                }
+            },
+            {
                 test: /\.(woff|woff2|eot|ttf|otf)$/,
                 use: [
                     'file-loader'
@@ -124,7 +135,7 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
             ignoreOrder: false, // Enable to remove warnings about conflicting order
-        })
+        }),
     ],
     optimization: {
         runtimeChunk: 'single',
